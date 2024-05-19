@@ -8,8 +8,22 @@
 
     </form>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+        <li class="p-0 w-5">
+            <a href="{{ route('admin.profile', 'vi') }}" class="">
+                <img src="{{ asset('backend/assets/img/icons/flags/vietnam-flag-icon.svg') }}" alt="vietnam-flag"
+                    width="24px" height="24px">
+            </a>
+        </li>
+        <li class="p-0 w-5">
+            <a href="{{ route('admin.profile', 'en') }}" class="px-3">
+                <img src="{{ asset('backend/assets/img/icons/flags/united-states-flag-icon.svg') }}" alt="vietnam-flag"
+                    width="24px" height="24px">
+            </a>
+        </li>
+        <li class="dropdown dropdown-list-toggle">
+
+            <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i
+                    class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Messages
                     <div class="float-right">
@@ -143,9 +157,16 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Logged in 5 min ago</div>
-                <a href="{{ route('admin.profile') }}" class="dropdown-item has-icon">
-                    <i class="far fa-user"></i> Profile
-                </a>
+                @if ($locale)
+                    <a href="{{ route('admin.profile', [$locale]) }}" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i> Profile
+                    </a>
+                @else
+                    <a href="{{ route('admin.profile', 'vi') }}" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i> Hồ Sơ
+                    </a>
+                @endif
+
                 <a href="features-activities.html" class="dropdown-item has-icon">
                     <i class="fas fa-bolt"></i> Activities
                 </a>

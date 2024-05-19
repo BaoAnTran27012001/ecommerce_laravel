@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use File;
+use Illuminate\Support\Facades\App;
+
 class ProfileController extends Controller
 {
-    public function index(){
-        return view('admin.profile.index');
+    public function index($locale ='vi'){
+        App::setLocale($locale);
+        return view('admin.profile.index')->with('locale',$locale);
     }
     public function updateProfile(Request $request){
         $request->validate([
