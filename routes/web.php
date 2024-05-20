@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\GoogleLogin\GoogleLoginController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,5 @@ require __DIR__.'/auth.php';
 
 
 Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
+Route::get('auth/google',[GoogleLoginController::class,'googlepage'])->name('goole.login');
+Route::get('auth/google/callback',[GoogleLoginController::class,'googlecallback'])->name('google.callback');
