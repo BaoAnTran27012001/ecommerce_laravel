@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'Admin' => 'Quản trị',
+    'Admin Abbreviation' => 'QT',
     'Profile' => 'Hồ sơ',
     'Dashboard' => 'Bảng điều khiển',
     'Update Profile'=>'Cập Nhật Hồ Sơ',

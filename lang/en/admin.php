@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'Admin' => 'Admin',
+    'Admin Abbreviation' => 'Adm',
     'Profile' => 'Profile',
     'Dashboard' => 'Dashboard',
     'Update Profile'=>'Update Profile',
