@@ -286,7 +286,6 @@
                                   </div>
                               </div>
                           </li>
-                          <li><a href="vendor.html">vendor</a></li>
                           <li><a href="blog.html">blog</a></li>
                           <li><a href="daily_deals.html">campain</a></li>
                           <li class="wsus__relative_li"><a href="#">pages <i class="fas fa-caret-down"></i></a>
@@ -312,7 +311,7 @@
                       <ul class="wsus__menu_item wsus__menu_item_right">
                           <li><a href="contact.html">contact</a></li>
                           <li><a href="dsahboard.html">my account</a></li>
-                          <li><a href="login.html">login</a></li>
+                          <li><a href="{{ route('login') }}">login</a></li>
                       </ul>
                   </div>
               </div>

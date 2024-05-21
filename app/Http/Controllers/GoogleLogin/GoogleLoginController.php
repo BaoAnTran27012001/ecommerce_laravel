@@ -28,7 +28,7 @@ class GoogleLoginController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect()->intended('dashboard');
+                return redirect()->intended('user/dashboard');
 
             }
 
@@ -45,7 +45,7 @@ class GoogleLoginController extends Controller
                 ]);
 
                 Auth::login($newUser);
-                return redirect()->intended('dashboard');
+                return redirect()->intended('user/dashboard');
             }
 
         } catch (Exception $e) {
