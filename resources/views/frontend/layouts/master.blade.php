@@ -24,6 +24,7 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
 </head>
 
@@ -38,9 +39,9 @@
     {{-- Main Menu End --}}
 
 
-  {{-- Mobile Menu Start --}}
-    
-  {{-- Mobile Menu End --}}
+    {{-- Mobile Menu Start --}}
+
+    {{-- Mobile Menu End --}}
 
 
     <!--==========================
@@ -123,9 +124,16 @@
     <script src="{{ asset('frontend/js/venobox.min.js') }}"></script>
     <!--classycountdown js-->
     <script src="{{ asset('frontend/js/jquery.classycountdown.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!--main/custom js-->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}")
+            @endforeach
+        @endif
+    </script>
 </body>
 
 </html>
