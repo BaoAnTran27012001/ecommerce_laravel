@@ -20,7 +20,7 @@ class LocalizationMiddleware
         if(Session::get("locale") != null){
             App::setLocale(Session::get("locale"));
         }else{
-            Session::put("locale","en");
+            Session::put("locale","vi");
             App::setLocale(Session::get("locale"));
         }
         return $next($request);

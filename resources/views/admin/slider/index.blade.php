@@ -27,47 +27,39 @@
                                 <table class="table table-bordered table-md">
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Created At</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Thứ tự</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Irwansyah Saputra</td>
-                                        <td>2017-01-09</td>
-                                        <td>
-                                            <div class="badge badge-success">Active</div>
-                                        </td>
-                                        <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Hasan Basri</td>
-                                        <td>2017-01-09</td>
-                                        <td>
-                                            <div class="badge badge-success">Active</div>
-                                        </td>
-                                        <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Kusnadi</td>
-                                        <td>2017-01-11</td>
-                                        <td>
-                                            <div class="badge badge-danger">Not Active</div>
-                                        </td>
-                                        <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Rizal Fakhri</td>
-                                        <td>2017-01-11</td>
-                                        <td>
-                                            <div class="badge badge-success">Active</div>
-                                        </td>
-                                        <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                                    </tr>
+                                    @foreach ($sliders as $slider)
+                                        <tr>
+                                            <td>{{ $slider->id }}</td>
+                                            <td>
+                                                <img width="120px"
+                                                    src="{{ $slider->banner != null ? asset($slider->banner) : '' }}"
+                                                    alt="preview-banner">
+                                            </td>
+                                            <td>{{ $slider->title }}</td>
+                                            <td>{{ $slider->order }}</td>
+                                            <td>
+                                                @if ($slider->status)
+                                                    <div class="badge badge-success">Hoạt động</div>
+                                                @else
+                                                    <div class="badge badge-danger">Không Hoạt động</div>
+                                                @endif
+
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.slider.edit', $slider->id) }}"
+                                                    class="btn btn-warning">Sửa</a>
+                                                <a href="{{ route('admin.slider.destroy', $slider->id) }}"
+                                                    class="btn btn-danger">Xoá</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </table>
                             </div>
                         </div>
