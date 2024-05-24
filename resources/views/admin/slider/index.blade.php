@@ -4,7 +4,7 @@
     <!-- Main Content -->
     <section class="section">
         <div class="section-header">
-            <h1>Table</h1>
+            <h1>Thanh Trượt</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="#">Components</a></div>
@@ -54,7 +54,7 @@
                                             <td>
                                                 <a href="{{ route('admin.slider.edit', $slider->id) }}"
                                                     class="btn btn-warning">Sửa</a>
-                                                <a href="{{ route('admin.slider.destroy', $slider->id) }}"
+                                                <a id="delete-btn" href="{{ route('admin.slider.destroy', $slider->id) }}"
                                                     class="btn btn-danger">Xoá</a>
                                             </td>
                                         </tr>
