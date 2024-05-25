@@ -17,9 +17,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-
+                            <h4>Danh Mục</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.slider.create') }}" class="btn btn-primary">Tạo mới</a>
+                                <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Tạo mới</a>
                             </div>
                         </div>
                         <div class="card-body">
