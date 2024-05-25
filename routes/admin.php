@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Localization\LocalizationController;
@@ -16,5 +17,9 @@ Route::resource('slider', SliderController::class);
 
 // Localization Route
 Route::get('locale/{lang}',[LocalizationController::class,'setLang'])->middleware('lang')->name('lang');
+
+
+// Category Routes
+Route::resource('category', CategoryController::class);
 
 ?>

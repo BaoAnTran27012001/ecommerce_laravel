@@ -56,7 +56,7 @@ class SliderController extends Controller
         $slider->status= $request->status;
         $slider->save();
         toastr()->success($trans_message,'success');
-        return redirect()->back();
+        return redirect()->route('admin.slider.index');
     }
 
     /**
