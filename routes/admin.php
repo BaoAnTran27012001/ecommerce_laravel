@@ -19,6 +19,11 @@ Route::resource('slider', SliderController::class);
 Route::get('locale/{lang}',[LocalizationController::class,'setLang'])->middleware('lang')->name('lang');
 
 
+
+//Slider Status
+
+Route::put('change-status',[CategoryController::class,'changeStatus'])->name('category-change-status');
+
 // Category Routes
 Route::resource('category', CategoryController::class);
 

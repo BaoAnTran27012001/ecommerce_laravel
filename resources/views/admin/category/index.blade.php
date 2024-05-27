@@ -29,6 +29,7 @@
                                         <th>#</th>
                                         <th>Biểu tượng</th>
                                         <th>Tên</th>
+                                        <th>Trạng Thái</th>
                                         <th>Hành động</th>
                                     </tr>
 
@@ -39,6 +40,24 @@
                                                 <i style="font-size: 24px" class="{{ $category->icon }}"></i>
                                             </td>
                                             <td>{{ $category->name }}</td>
+                                            <td>
+                                                @if ($category->status == 1)
+                                                    <label style="cursor: pointer" class="custom-switch mt-2">
+                                                        <input type="checkbox" checked name="custom-switch-checkbox"
+                                                            class="custom-switch-input change-status"
+                                                            data-id="{{ $category->id }}">
+                                                        <span class="custom-switch-indicator"></span>
+                                                    </label>
+                                                @else
+                                                    <label style="cursor: pointer" class="custom-switch mt-2">
+                                                        <input type="checkbox" name="custom-switch-checkbox"
+                                                            class="custom-switch-input change-status"
+                                                            data-id="{{ $category->id }}">
+                                                        <span class="custom-switch-indicator"></span>
+                                                    </label>
+                                                @endif
+
+                                            </td>
                                             <td>
                                                 <a href="{{ route('admin.category.edit', $category->id) }}"
                                                     class="btn btn-warning">Sửa</a>
@@ -61,3 +80,27 @@
         </div>
     </section>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '.change-status', function() {
+                let isChecked = $(this).is(':checked');
+                let id = $(this).data('id');
+                $.ajax({
+                    url: "{{ route('admin.category-change-status') }}",
+                    method:"PUT",
+                    data: {
+                        isChecked:isChecked,
+                        id:id
+                    },
+                    success: function (response) {
+
+                    },
+                    error:function(xhr,status,error){
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush
