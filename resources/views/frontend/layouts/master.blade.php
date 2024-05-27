@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
 
-    <title>Sazao || e-Commerce HTML Template</title>
-    <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon.png') }}">
+    <title>Ender Shop</title>
+    <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon_new.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">

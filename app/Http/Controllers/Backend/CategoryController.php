@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Str;
 class CategoryController extends Controller
 {
     /**
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories = Category::all();
+        return view('admin.category.index',compact('categories'));
     }
 
     /**
@@ -28,7 +30,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $success_message = __('validation.created');
+        $request->validate([
+            'icon' => ['required','not_in:empty'],
+            'name' => ['required','max:100','unique:categories,name'],
+            'status' => ['required']
+        ]);
+        $category = new Category();
+        $category->icon = $request->icon;
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->status = $request->status;
+        $category->save();
+        toastr($success_message,"success");
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -44,7 +59,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -52,7 +68,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $success_message = __('validation.updated');
+        $request->validate([
+            'icon' => ['required','not_in:empty'],
+            'name' => ['required','max:100','unique:categories,name,'.$id],
+            'status' => ['required']
+        ]);
+        $category = Category::findOrFail($id);
+        $category->icon = $request->icon;
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->status = $request->status;
+        $category->save();
+        toastr($success_message,"success");
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -60,6 +89,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return response(["status"=>"success","message"=>"Xoá Thành Công"]);
     }
 }

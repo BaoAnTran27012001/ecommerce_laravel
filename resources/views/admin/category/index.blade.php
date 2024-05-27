@@ -27,32 +27,27 @@
                                 <table class="table table-bordered table-md">
                                     <tr>
                                         <th>#</th>
-                                        <th>Hình ảnh</th>
-                                        <th>Tiêu đề</th>
-                                        <th>Thứ tự</th>
-                                        <th>Trạng thái</th>
+                                        <th>Biểu tượng</th>
+                                        <th>Tên</th>
                                         <th>Hành động</th>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <img width="120px"
-                                                src=""
-                                                alt="preview-banner">
-                                        </td>
-                                        <td>Áo Nam</td>
-                                        <td>1</td>
-                                        <td>
-                                           Hoạt động
 
-                                        </td>
-                                        <td>
-                                            <a href=""
-                                                class="btn btn-warning">Sửa</a>
-                                            <a id="delete-btn" href=""
-                                                class="btn btn-danger">Xoá</a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($categories as $category)
+                                        <tr>
+                                            <td>{{ $category->id }}</td>
+                                            <td>
+                                                <i style="font-size: 24px" class="{{ $category->icon }}"></i>
+                                            </td>
+                                            <td>{{ $category->name }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.category.edit', $category->id) }}"
+                                                    class="btn btn-warning">Sửa</a>
+                                                <a id="delete-btn"
+                                                    href="{{ route('admin.category.destroy', $category->id) }}"
+                                                    class="btn btn-danger">Xoá</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
                                 </table>
                             </div>

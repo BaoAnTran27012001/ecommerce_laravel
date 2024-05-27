@@ -18,45 +18,29 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>Tạo Danh Mục</h4>
-
                         </div>
                         <div class="card-body">
-                            <form action="">
-                                
+                            <form action="{{ route('admin.category.store') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label class="d-block" for="">Biểu tượng</label>
+                                    <button class="btn btn-primary" data-selected-class="btn-danger"
+                                        data-unselected-class="btn-info" role="iconpicker" name="icon"></button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tên</label>
+                                    <input type="text" class="form-control" name="name" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputState">Trạng Thái</label>
+                                    <select value="" id="inputState" class="form-control" name="status">
+                                        <option value="1" selected>Hoạt động</option>
+                                        <option value="0">Không Hoạt Động</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Tạo</button>
                             </form>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-md">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Hình ảnh</th>
-                                        <th>Tiêu đề</th>
-                                        <th>Thứ tự</th>
-                                        <th>Trạng thái</th>
-                                        <th>Hành động</th>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <img width="120px"
-                                                src=""
-                                                alt="preview-banner">
-                                        </td>
-                                        <td>Áo Nam</td>
-                                        <td>1</td>
-                                        <td>
-                                           Hoạt động
 
-                                        </td>
-                                        <td>
-                                            <a href=""
-                                                class="btn btn-warning">Sửa</a>
-                                            <a id="delete-btn" href=""
-                                                class="btn btn-danger">Xoá</a>
-                                        </td>
-                                    </tr>
-
-                                </table>
-                            </div>
                         </div>
 
                     </div>
