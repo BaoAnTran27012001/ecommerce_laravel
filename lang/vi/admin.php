@@ -13,4 +13,6 @@ return [
     'New Password' =>'Mật Khẩu Mới',
     'Password Confirmation' => 'Xác Nhận Mật Khẩu',
     'Save Changes' => 'Lưu thay đổi',
+    'Hi' => 'Chào',
+    'Functionality' => 'Chức Năng'
 ];

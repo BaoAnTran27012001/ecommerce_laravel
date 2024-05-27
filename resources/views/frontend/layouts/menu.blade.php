@@ -219,11 +219,12 @@
                       </ul>
 
                       <ul class="wsus__menu_item">
-                          <li><a class="active" href="index.html">home</a></li>
-                          <li><a href="product_grid_view.html">shop <i class="fas fa-caret-down"></i></a>
+                          <li><a class="active" href="index.html">trang chủ</a></li>
+                          <li><a href="product_grid_view.html">cửa hàng <i class="fas fa-caret-down"></i></a>
                               <div class="wsus__mega_menu">
                                   <div class="row">
-                                      <div class="col-xl-3 col-lg-3">
+                                      {{-- category --}}
+                                      {{-- <div class="col-xl-3 col-lg-3">
                                           <div class="wsus__mega_menu_colum">
                                               <h4>women</h4>
                                               <ul class="wsis__mega_menu_item">
@@ -237,81 +238,19 @@
                                                   <li><a href="#">Jewlery & Watches</a></li>
                                               </ul>
                                           </div>
-                                      </div>
-                                      <div class="col-xl-3 col-lg-3">
-                                          <div class="wsus__mega_menu_colum">
-                                              <h4>men</h4>
-                                              <ul class="wsis__mega_menu_item">
-                                                  <li><a href="#">New Arrivals</a></li>
-                                                  <li><a href="#">Best Sellers</a></li>
-                                                  <li><a href="#">Trending</a></li>
-                                                  <li><a href="#">Clothing</a></li>
-                                                  <li><a href="#">Shoes</a></li>
-                                                  <li><a href="#">Bags</a></li>
-                                                  <li><a href="#">Accessories</a></li>
-                                                  <li><a href="#">Jewlery & Watches</a></li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                      <div class="col-xl-3 col-lg-3">
-                                          <div class="wsus__mega_menu_colum">
-                                              <h4>category</h4>
-                                              <ul class="wsis__mega_menu_item">
-                                                  <li><a href="#"> Healthy & Beauty</a></li>
-                                                  <li><a href="#">Gift Ideas</a></li>
-                                                  <li><a href="#">Toy & Games</a></li>
-                                                  <li><a href="#">Cooking</a></li>
-                                                  <li><a href="#">Smart Phones</a></li>
-                                                  <li><a href="#">Cameras & Photo</a></li>
-                                                  <li><a href="#">Accessories</a></li>
-                                                  <li><a href="#">View All Categories</a></li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                      <div class="col-xl-3 col-lg-3">
-                                          <div class="wsus__mega_menu_colum">
-                                              <h4>women</h4>
-                                              <ul class="wsis__mega_menu_item">
-                                                  <li><a href="#">New Arrivals</a></li>
-                                                  <li><a href="#">Best Sellers</a></li>
-                                                  <li><a href="#">Trending</a></li>
-                                                  <li><a href="#">Clothing</a></li>
-                                                  <li><a href="#">Shoes</a></li>
-                                                  <li><a href="#">Bags</a></li>
-                                                  <li><a href="#">Accessories</a></li>
-                                                  <li><a href="#">Jewlery & Watches</a></li>
-                                              </ul>
-                                          </div>
-                                      </div>
+                                      </div> --}}
+
+
                                   </div>
                               </div>
                           </li>
                           <li><a href="blog.html">blog</a></li>
-                          <li><a href="daily_deals.html">campain</a></li>
-                          <li class="wsus__relative_li"><a href="#">pages <i class="fas fa-caret-down"></i></a>
-                              <ul class="wsus__menu_droapdown">
-                                  <li><a href="404.html">404</a></li>
-                                  <li><a href="faqs.html">faq</a></li>
-                                  <li><a href="invoice.html">invoice</a></li>
-                                  <li><a href="about_us.html">about</a></li>
-                                  <li><a href="product_grid_view.html">product</a></li>
-                                  <li><a href="check_out.html">check out</a></li>
-                                  <li><a href="team.html">team</a></li>
-                                  <li><a href="change_password.html">change password</a></li>
-                                  <li><a href="custom_page.html">custom page</a></li>
-                                  <li><a href="forget_password.html">forget password</a></li>
-                                  <li><a href="privacy_policy.html">privacy policy</a></li>
-                                  <li><a href="product_category.html">product category</a></li>
-                                  <li><a href="brands.html">brands</a></li>
-                              </ul>
-                          </li>
-                          <li><a href="track_order.html">track order</a></li>
-                          <li><a href="daily_deals.html">daily deals</a></li>
+                          <li><a href="track_order.html">theo dõi đơn hàng</a></li>
                       </ul>
                       <ul class="wsus__menu_item wsus__menu_item_right">
-                          <li><a href="contact.html">contact</a></li>
-                          <li><a href="dsahboard.html">my account</a></li>
-                          <li><a href="{{ route('login') }}">login</a></li>
+                          <li><a href="contact.html">liên hệ</a></li>
+                          <li><a href="dsahboard.html">tài khoản</a></li>
+                          <li><a href="{{ route('login') }}">đăng nhập</a></li>
                       </ul>
                   </div>
               </div>
@@ -334,21 +273,21 @@
           <li><a href="compare.html"><i class="far fa-random"></i> </i><span>3</span></a></li>
       </ul>
       <form>
-          <input type="text" placeholder="Search">
+          <input type="text" placeholder="Tìm Kiếm">
           <button type="submit"><i class="far fa-search"></i></button>
       </form>
 
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
               <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                  role="tab" aria-controls="pills-home" aria-selected="true">Categories</button>
+                  role="tab" aria-controls="pills-home" aria-selected="true">Danh Mục</button>
           </li>
           <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                  role="tab" aria-controls="pills-profile" aria-selected="false">main menu</button>
+                  role="tab" aria-controls="pills-profile" aria-selected="false">menu chính</button>
           </li>
       </ul>
-      <div class="tab-content" id="pills-tabContent">
+      {{-- <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
               <div class="wsus__mobile_menu_main_menu">
                   <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -474,7 +413,7 @@
                   </div>
               </div>
           </div>
-      </div>
+      </div> --}}
   </section>
   <!--============================
         MOBILE MENU END

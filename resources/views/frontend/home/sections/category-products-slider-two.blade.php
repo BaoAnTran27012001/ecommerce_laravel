@@ -6,8 +6,8 @@
          <div class="row">
              <div class="col-xl-12">
                  <div class="wsus__section_header">
-                     <h3>Apparels & Clothings</h3>
-                     <a class="see_btn" href="#">see more <i class="fas fa-caret-right"></i></a>
+                     <h3>Trang Phục & Quần Áo</h3>
+                     <a class="see_btn" href="#">xem thêm <i class="fas fa-caret-right"></i></a>
                  </div>
              </div>
          </div>

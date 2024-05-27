@@ -6,9 +6,8 @@
         <div class="section-header">
             <h1>Danh Mục</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="#">Components</a></div>
-                <div class="breadcrumb-item">Table</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Bảng điều khiển</a></div>
+                <div class="breadcrumb-item">Danh Mục</div>
             </div>
         </div>
 
@@ -88,15 +87,16 @@
                 let id = $(this).data('id');
                 $.ajax({
                     url: "{{ route('admin.category-change-status') }}",
-                    method:"PUT",
+                    method: "PUT",
                     data: {
-                        isChecked:isChecked,
-                        id:id
+                        _token: "{{ csrf_token() }}",
+                        isChecked: isChecked,
+                        id: id
                     },
-                    success: function (response) {
+                    success: function(response) {
 
                     },
-                    error:function(xhr,status,error){
+                    error: function(xhr, status, error) {
                         console.log(error);
                     }
                 });

@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="wsus__section_header">
-                                <h3>hot deals of the day</h3>
+                                <h3>Deal hot trong ngày</h3>
                             </div>
                         </div>
                     </div>
@@ -138,12 +138,10 @@
                             <div class="col-xl-12">
                                 <div class="wsus__section_header justify-content-start">
                                     <div class="monthly_top_filter2 mb-1">
-                                        <button class="ms-0 active" data-filter="*">music</button>
-                                        <button data-filter=".clotha">clothing</button>
-                                        <button data-filter=".eleca">Electronic</button>
-                                        <button data-filter=".spka">Speakers</button>
-                                        <button data-filter=".cama">Cameras</button>
-                                        <button class="me-0" data-filter=".wata">Watches</button>
+                                        <button class="ms-0 active" data-filter="*">test category 1</button>
+                                        <button data-filter=".clotha">test category 2</button>
+                                        <button data-filter=".eleca">test category 3</button>
+                                        <button data-filter=".spka">test category 4</button>
                                     </div>
                                 </div>
                             </div>

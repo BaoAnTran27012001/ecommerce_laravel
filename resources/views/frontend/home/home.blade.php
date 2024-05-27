@@ -155,9 +155,7 @@
     @include('frontend.home.sections.banner-slider')
     {{-- Banner Slider End --}}
 
-    {{-- Flash Sale Start --}}
-    @include('frontend.home.sections.flash-sale')
-    {{-- Flash Sale End --}}
+    
 
     {{-- Top Category Product Start --}}
     @include('frontend.home.sections.top-category-products')
@@ -195,19 +193,12 @@
     {{-- Category Product Slider Two End --}}
 
 
-    {{-- Large Banner Start --}}
-    @include('frontend.home.sections.large-banner')
-    {{-- Large Banner End --}}
-
+    
 
 
     {{-- Weekly Best Item Start --}}
     @include('frontend.home.sections.weekly-best-item')
     {{-- Weekly Best Item End --}}
-
-        {{-- Service Start --}}
-        @include('frontend.home.sections.services')
-        {{-- Service End --}}
 
        {{-- Blog Start --}}
        @include('frontend.home.sections.blog')

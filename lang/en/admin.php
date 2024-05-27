@@ -12,5 +12,7 @@ return [
     'Current Password'=>'Current Password',
     'New Password' =>'New Password',
     'Password Confirmation' => 'Confirm Password',
-    'Save Changes' => 'Save Changes'
+    'Save Changes' => 'Save Changes',
+    'Hi' => 'Hi',
+    'Functionality' => 'Functionality'
 ];

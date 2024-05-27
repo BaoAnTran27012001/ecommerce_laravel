@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-xl-6 col-sm-6">
                 <div class="wsus__section_header">
-                    <h3>weekly best rated Products</h3>
+                    <h3>Sản phẩm được đánh giá cao</h3>
                 </div>
                 <div class="row weekly_best2">
                     <div class="col-xl-4 col-lg-4">
@@ -121,7 +121,7 @@
             </div>
             <div class="col-xl-6 col-sm-6">
                 <div class="wsus__section_header">
-                    <h3>weekly best Sale Products</h3>
+                    <h3>sản phẩm bán chạy</h3>
                 </div>
                 <div class="row weekly_best2">
                     <div class="col-xl-4 col-lg-4">

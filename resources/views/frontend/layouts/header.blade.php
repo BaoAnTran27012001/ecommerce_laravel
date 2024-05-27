@@ -19,22 +19,14 @@
             <div class="col-xl-5 col-md-6 col-lg-4 d-none d-lg-block">
                 <div class="wsus__search">
                     <form>
-                        <input type="text" placeholder="Search...">
+                        <input type="text" placeholder="Tìm Kiếm">
                         <button type="submit"><i class="far fa-search"></i></button>
                     </form>
                 </div>
             </div>
             <div class="col-xl-5 col-3 col-md-3 col-lg-6">
                 <div class="wsus__call_icon_area">
-                    <div class="wsus__call_area">
-                        <div class="wsus__call">
-                            <i class="fas fa-user-headset"></i>
-                        </div>
-                        <div class="wsus__call_text">
-                            <p>example@gmail.com</p>
-                            <p>+569875544220</p>
-                        </div>
-                    </div>
+                    <div></div>
                     <ul class="wsus__icon_area">
                         <li><a href="wishlist.html"><i class="fal fa-heart"></i><span>05</span></a></li>
                         <li><a href="compare.html"><i class="fal fa-random"></i><span>03</span></a></li>

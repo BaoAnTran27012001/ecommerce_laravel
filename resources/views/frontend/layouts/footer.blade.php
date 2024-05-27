@@ -9,11 +9,11 @@
                     <a class="wsus__footer_2_logo" href="#">
                         <img src="images/logo_2.png" alt="logo">
                     </a>
-                    <a class="action" href="callto:+8896254857456"><i class="fas fa-phone-alt"></i>
-                        +8896254857456</a>
-                    <a class="action" href="mailto:example@gmail.com"><i class="far fa-envelope"></i>
-                        example@gmail.com</a>
-                    <p><i class="fal fa-map-marker-alt"></i> San Francisco City Hall, San Francisco, CA</p>
+                    <a class="action" href="callto:0356383011"><i class="fas fa-phone-alt"></i>
+                        0356383011</a>
+                    <a class="action" href="mailto:anbaotran456@gmail.com"><i class="far fa-envelope"></i>
+                        anbaotran456@gmail.com</a>
+                    <p><i class="fal fa-map-marker-alt"></i>145/9 Lê Thị Lơ, Ấp Thới Tây 2,xã Tân Hiệp</p>
                     <ul class="wsus__footer_social">
                         <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -23,7 +23,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-2 col-sm-5 col-md-4 col-lg-2">
+            {{-- <div class="col-xl-2 col-sm-5 col-md-4 col-lg-2">
                 <div class="wsus__footer_content">
                     <h5>Company</h5>
                     <ul class="wsus__footer_menu">
@@ -57,7 +57,7 @@
                     <p>Get all the latest information on Events, Sales and Offers.
                         Get all the latest information on Events.</p>
                     <form>
-                        <input type="text" placeholder="Search...">
+                        <input type="text" placeholder="Tìm Kiếm">
                         <button type="submit" class="common_btn">subscribe</button>
                     </form>
                     <div class="footer_payment">
@@ -65,10 +65,10 @@
                         <img src="images/credit2.png" alt="card" class="img-fluid">
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
-   
+
 </footer>
 <!--============================
         FOOTER PART END

@@ -9,10 +9,11 @@
         <ul class="sidebar-menu">
             <li class="menu-header">{{ __('admin.Dashboard') }}</li>
             <li class="dropdown active">
-                <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>Bảng điều khiển</span></a>
+                <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>Bảng điều
+                        khiển</span></a>
 
             </li>
-            <li class="menu-header">Starter</li>
+            <li class="menu-header">{{__('admin.Functionality')}}</li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Quản lí danh mục</span></a>
@@ -38,8 +39,7 @@
                         <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
                     </ul>
                 </li> --}}
-            <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank
-                        Page</span></a></li>
+            <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Trang Trống</span></a></li>
         </ul>
 
 
