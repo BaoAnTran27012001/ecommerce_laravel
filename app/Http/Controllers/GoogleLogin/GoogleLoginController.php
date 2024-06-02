@@ -22,7 +22,7 @@ class GoogleLoginController extends Controller
             $user = Socialite::driver('google')->user();
             $finduser = User::where('email', $user->email)->first();
 
-            if($finduser)
+            if($finduser && $finduser->role == "user")
 
             {
 
@@ -31,7 +31,10 @@ class GoogleLoginController extends Controller
                 return redirect()->intended('user/dashboard');
 
             }
-
+            else if($finduser && $finduser->role == "admin"){
+                dd($finduser);
+                return redirect()->intended('/');
+            }
             else
 
             {

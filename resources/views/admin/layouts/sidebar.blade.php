@@ -13,7 +13,7 @@
                         khiển</span></a>
 
             </li>
-            <li class="menu-header">{{__('admin.Functionality')}}</li>
+            <li class="menu-header">{{ __('admin.Functionality') }}</li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Quản lí danh mục</span></a>
@@ -27,6 +27,14 @@
                     <span>Quản lí trang web</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.slider.index') }}">Thanh Trượt</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Quản lí quyền</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.role.index') }}">Quyền (Role)</a></li>
 
                 </ul>
             </li>
