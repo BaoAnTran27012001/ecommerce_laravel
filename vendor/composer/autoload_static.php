@@ -42,6 +42,7 @@ class ComposerStaticInitabcc925804b0fd556bd05d07478d97db
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
         '101b35f72e0ccb1b5ef72aa86bba3ef9' => __DIR__ . '/..' . '/yoeunes/toastr/src/helpers.php',
+        '882c88ecbfcc72567cdbf5bff63ef682' => __DIR__ . '/../..' . '/App/Helper/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -613,6 +614,7 @@ class ComposerStaticInitabcc925804b0fd556bd05d07478d97db
         'App\\Http\\Controllers\\Backend\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/AdminController.php',
         'App\\Http\\Controllers\\Backend\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/CategoryController.php',
         'App\\Http\\Controllers\\Backend\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/ProfileController.php',
+        'App\\Http\\Controllers\\Backend\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/RoleController.php',
         'App\\Http\\Controllers\\Backend\\SliderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/SliderController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Frontend\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/HomeController.php',
@@ -636,6 +638,7 @@ class ComposerStaticInitabcc925804b0fd556bd05d07478d97db
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\Slider' => __DIR__ . '/../..' . '/app/Models/Slider.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

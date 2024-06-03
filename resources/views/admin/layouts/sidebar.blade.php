@@ -8,33 +8,35 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">{{ __('admin.Dashboard') }}</li>
-            <li class="dropdown active">
+            <li class="dropdown {{ setActive(['admin.dashboard']) }}">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>Bảng điều
                         khiển</span></a>
 
             </li>
             <li class="menu-header">{{ __('admin.Functionality') }}</li>
-            <li class="dropdown">
+            <li class="dropdown {{ setActive(['admin.category.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Quản lí danh mục</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.category.index') }}">Danh Mục</a></li>
+                    <li class="{{ setActive(['admin.category.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.category.index') }}">Danh Mục</a></li>
 
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ setActive(['admin.slider.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Quản lí trang web</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.slider.index') }}">Thanh Trượt</a></li>
-
+                    <li class="{{ setActive(['admin.slider.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.slider.index') }}">Thanh Trượt</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ setActive(['admin.role.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Quản lí quyền</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.role.index') }}">Quyền (Role)</a></li>
+                    <li class="{{ setActive(['admin.role.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.role.index') }}">Quyền (Role)</a></li>
 
                 </ul>
             </li>
