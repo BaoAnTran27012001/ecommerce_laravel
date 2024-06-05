@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
@@ -23,9 +24,13 @@ Route::get('locale/{lang}',[LocalizationController::class,'setLang'])->middlewar
 
 //Slider Status
 
-Route::put('change-status',[CategoryController::class,'changeStatus'])->name('category-change-status');
 
 // Category Routes
+Route::put('change-status',[CategoryController::class,'changeStatus'])->name('category-change-status');
 Route::resource('category', CategoryController::class);
 
+
+// Brand Routes
+Route::put('brand/change-status',[BrandController::class,'changeStatus'])->name('brand-change-status');
+Route::resource('brand', BrandController::class);
 ?>
