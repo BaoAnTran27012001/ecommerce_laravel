@@ -60,9 +60,9 @@
 
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.category.edit', $brand->id) }}"
+                                                <a href="{{ route('admin.brand.edit', $brand->id) }}"
                                                     class="btn btn-warning">Sửa</a>
-                                                <a id="delete-btn" href="{{ route('admin.category.destroy', $brand->id) }}"
+                                                <a id="delete-btn" href="{{ route('admin.brand.destroy', $brand->id) }}"
                                                     class="btn btn-danger">Xoá</a>
                                             </td>
                                         </tr>
