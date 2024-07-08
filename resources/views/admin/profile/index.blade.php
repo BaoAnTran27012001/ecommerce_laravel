@@ -23,16 +23,10 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="mb-3">
-                                        <img width="100px" src="{{ asset(Auth::user()->image) }}" alt="">
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <label>{{ __('admin.Avatar') }}</label>
-                                        <input type="file" name="image" class="form-control" name="name">
-                                    </div>
+
                                     <div class="form-group col-md-6 col-12">
                                         <label>{{ __('admin.Name') }}</label>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->name }}"
+                                        <input type="text" class="form-control" value="{{ Auth::user()->username }}"
                                             required="" name="name">
                                     </div>
                                     <div class="form-group col-md-6 col-12">

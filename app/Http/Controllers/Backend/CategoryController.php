@@ -39,7 +39,6 @@ class CategoryController extends Controller
         $category = new Category();
         $category->icon = $request->icon;
         $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
         $category->status = $request->status;
         $category->save();
         toastr($success_message,"success");

@@ -14,21 +14,32 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'Admin User',
+                'firstname' => 'An',
+                'lastname' => 'Tran',
                 'username'=>'adminuser',
                 'email'=> 'admin@gmail.com',
-                'role'=>'admin',
-                'status'=>'active',
-                'password'=>bcrypt('password'),
+                'phone'=> '0356383011',
+                'password'=>bcrypt('123'),
+                'role_id'=>1,
             ],
             [
-                'name' => 'Normal User',
+               'firstname' => 'Anonymous',
+                'lastname' => 'Fin',
                 'username'=>'normaluser',
-                'email'=> 'normal@gmail.com',
-                'role'=>'user',
-                'status'=>'active',
-                'password'=>bcrypt('password'),
-            ]
+                'email'=> 'andy@gmail.com',
+                'phone'=> '',
+                'password'=>bcrypt('123'),
+                'role_id'=>2,
+            ],
+            [
+                'firstname' => 'Fahasa',
+                 'lastname' => 'Store',
+                 'username'=>'supplier',
+                 'email'=> 'fahasa@gmail.com',
+                 'phone'=> '',
+                 'password'=>bcrypt('123'),
+                 'role_id'=>3,
+             ]
         ]);
     }
 }

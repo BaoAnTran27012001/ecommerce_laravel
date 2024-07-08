@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('btn_url')->nullable();
             $table->integer('order')->nullable();
             $table->boolean('status')->nullable();
-            $table->timestamps();
         });
     }
 

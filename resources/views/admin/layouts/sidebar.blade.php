@@ -47,7 +47,8 @@
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.brand.*']) }}"><a class="nav-link"
                             href="{{ route('admin.brand.index') }}">Thương hiệu</a></li>
-
+                    <li class="{{ setActive(['admin.brand.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.products.index') }}">Sản Phẩm</a></li>
                 </ul>
             </li>
             {{-- <li class="dropdown">
