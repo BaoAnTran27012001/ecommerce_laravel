@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
@@ -43,6 +44,11 @@ require __DIR__.'/auth.php';
 Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
 Route::get('auth/google',[GoogleLoginController::class,'googlepage'])->name('goole.login');
 Route::get('auth/google/callback',[GoogleLoginController::class,'googlecallback'])->name('google.callback');
+
+
+// Product Detail route
+
+Route::get('product-detail/{id}',[FrontendProductController::class,'showProduct'])->name('product-detail');
 
 
 // Set Language For User
