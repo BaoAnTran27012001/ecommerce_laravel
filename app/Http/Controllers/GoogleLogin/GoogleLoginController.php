@@ -21,14 +21,13 @@ class GoogleLoginController extends Controller
         try {
             $user = Socialite::driver('google')->user();
             $finduser = User::where('email', $user->email)->first();
-
-            if($finduser && $finduser->role == "user")
+            if($finduser && $finduser->role_id == 2)
 
             {
 
                 Auth::login($finduser);
 
-                return redirect()->intended('user/dashboard');
+                return redirect()->intended('/');
 
             }
             else if($finduser && $finduser->role == "admin"){
@@ -39,14 +38,12 @@ class GoogleLoginController extends Controller
 
             {
                 $newUser = User::create([
-                    'name' => $user->name,
+                    'username' => $user->name,
                     'email' => $user->email,
-                    'google_id'=> $user->id,
-                    'password' => encrypt('123456dummy'),
+                    'password' => encrypt('123'),
                     'email_verified_at' => $timestamp,
-                    'role' => 'user'
+                    'role_id' => 2
                 ]);
-
                 Auth::login($newUser);
                 return redirect()->intended('user/dashboard');
             }

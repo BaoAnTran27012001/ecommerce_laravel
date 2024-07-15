@@ -51,8 +51,22 @@
                       </ul>
                       <ul class="wsus__menu_item wsus__menu_item_right">
                           <li><a href="contact.html">liên hệ</a></li>
-                          <li><a href="dsahboard.html">tài khoản</a></li>
-                          <li><a href="{{ route('login') }}">đăng nhập</a></li>
+                          @if (Auth::check())
+                              <li><a href="{{ route('user.dashboard') }}">tài khoản</a></li>
+                          @endif
+                          @if (Auth::check())
+                              <li>
+                                  <form method="POST" action="{{ route('logout') }}">
+                                      @csrf
+                                      <a href="{{ route('logout') }}"
+                                          onclick="event.preventDefault();
+                                this.closest('form').submit();">Đăng
+                                          Xuất</a>
+                                  </form>
+                              </li>
+                          @else
+                              <li><a href="{{ route('login') }}">Đăng Nhập</a></li>
+                          @endif
                       </ul>
                   </div>
               </div>

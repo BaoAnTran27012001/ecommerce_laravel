@@ -42,7 +42,7 @@ require __DIR__.'/auth.php';
 
 
 Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
-Route::get('auth/google',[GoogleLoginController::class,'googlepage'])->name('goole.login');
+Route::get('auth/google',[GoogleLoginController::class,'googlepage'])->name('google.login');
 Route::get('auth/google/callback',[GoogleLoginController::class,'googlecallback'])->name('google.callback');
 
 
