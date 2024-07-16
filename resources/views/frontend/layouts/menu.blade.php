@@ -51,21 +51,20 @@
                       </ul>
                       <ul class="wsus__menu_item wsus__menu_item_right">
                           <li><a href="contact.html">liên hệ</a></li>
-                          @if (Auth::check())
+                          @if (Session()->has('loginId'))
                               <li><a href="{{ route('user.dashboard') }}">tài khoản</a></li>
                           @endif
-                          @if (Auth::check())
+                          @if (Session()->has('loginId'))
                               <li>
-                                  <form method="POST" action="{{ route('logout') }}">
+                                  <form method="POST" action="{{ route('user.logout') }}">
                                       @csrf
-                                      <a href="{{ route('logout') }}"
-                                          onclick="event.preventDefault();
-                                this.closest('form').submit();">Đăng
-                                          Xuất</a>
+                                      <button type="submit"
+                                          style="border: none;background-color: inherit;display: inline-block;">Đăng
+                                          Xuất</button>
                                   </form>
                               </li>
                           @else
-                              <li><a href="{{ route('login') }}">Đăng Nhập</a></li>
+                              <li><a href="{{ route('user.loginPage') }}">Đăng Nhập</a></li>
                           @endif
                       </ul>
                   </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Str;
+use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     /**
@@ -88,6 +89,15 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
+
+        $check_row = DB::select('call CheckCategoryRelation(?)',[$id]);
+        $result = null;
+        foreach($check_row as $row){
+            $result = $row->row_counted;
+        }
+        if($result > 0){
+            return response(["status"=>"error","message"=>"Danh Mục Đang Được Sử Dụng Không được Xoá"]);
+        }
         $category = Category::findOrFail($id);
         $category->delete();
         return response(["status"=>"success","message"=>"Xoá Thành Công"]);

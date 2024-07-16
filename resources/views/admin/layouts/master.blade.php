@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,12 +113,13 @@
                 let deleteUrl = $(this).attr('href');
                 Swal.fire({
                     title: "Xác nhận xoá ?",
-                    text: "You won't be able to revert this!",
+                    text: "Bạn Không Thể Hoàn Tác Được Nếu Xoá!",
                     icon: "warning",
                     showCancelButton: true,
+                    cancelButtonText: "Huỷ",
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
+                    confirmButtonText: "Có!"
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
@@ -130,8 +132,14 @@
                                         "Đã Xoá!",
                                         data.message
                                     );
+                                    window.location.reload();
+                                } else if (data.status == "error") {
+                                    Swal.fire(
+                                        "Cảnh Báo !",
+                                        data.message
+                                    );
                                 }
-                                window.location.reload();
+
 
                             },
                             error: function(xhr, status, error) {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class UserDashboardController extends Controller

@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -75,5 +76,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'lang' => \App\Http\Middleware\LocalizationMiddleware::class
+    ];
+    protected $routeMiddleware = [
+        'isLoggedIn' => \App\Http\Middleware\UserAuthCheck::class,
+        'alreadyLoggedIn' => \App\Http\Middleware\UserAlreadyLoggedIn::class,
     ];
 }
