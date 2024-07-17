@@ -73,13 +73,13 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Giá gốc</label>
-                                        <input type="text" class="form-control" name="price"
+                                        <label for="">Giá Gốc</label>
+                                        <input type="text" class="form-control price" name="price"
                                             value="{{ $product->price }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Giá Giảm</label>
-                                        <input type="text" class="form-control" value="{{ $product->discount_price }}"
+                                        <label for="">Giá Bán</label>
+                                        <input type="text" class="form-control discount_price" value="{{ $product->discount_price }}"
                                             name="discount_price">
                                     </div>
                                     <div class="row">
