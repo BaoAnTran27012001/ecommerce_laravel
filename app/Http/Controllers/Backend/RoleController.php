@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -13,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::where('id','<>',1)->get();
         return view('admin.role.index',compact('roles'));
     }
 
@@ -54,8 +55,9 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        $role = Role::findOrFail($id);
-        return view('admin.role.edit',compact('role'));
+        $user = User::findOrFail($id);
+        $roles = Role::where('id','<>',1)->get();
+        return view('admin.role.edit',compact('user','roles'));
     }
 
     /**

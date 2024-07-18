@@ -13,29 +13,22 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Cấp Quyền</h4>
+                            <h4>Chỉnh Sửa Quyền</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="{{ route('admin.user.update', $user->id) }}" method="POST"
+                                <form action="{{ route('admin.role.update', $role->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf
+                                    
+                                   
                                     <div class="form-group">
-                                        <label for="">Người dùng</label>
-                                        <p>{{ $user->username }}</p>
+                                        <label for="">Tên Quyền</label>
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ $role->name }}">
                                     </div>
-
-                                    <div class="form-group">
-                                        <select class="form-control col-md-4" name="role_select" id="">
-                                            <option value="">Chọn</option>
-                                            @foreach ($roles as $role)
-                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary">Cấp Quyền</button>
+                                    <button type="submit" class="btn btn-primary">Sửa</button>
                                 </form>
                             </div>
                         </div>
