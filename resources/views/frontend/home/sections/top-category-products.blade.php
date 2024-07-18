@@ -27,8 +27,9 @@
                                  </div>
                                  <div class="wsus__hot_deals__single_text">
                                      <h5>{{ $product->name }}</h5>
-                                     <p class="wsus__tk">{{ $product->discount_price }} <del
-                                             style="color: red">{{ $product->price }}</del>
+                                     <p class="wsus__tk">
+                                         {{ number_format($product->discount_price, 0, ',', '.') . 'đ' }} <del
+                                             style="color: red">{{ number_format($product->price, 0, ',', '.') . 'đ' }}</del>
                                      </p>
                                  </div>
                              </a>

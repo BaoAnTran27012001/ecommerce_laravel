@@ -6,7 +6,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>One Shop || e-Commerce HTML Template</title>
+    <title>Ender Shop</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -44,7 +44,7 @@
                     width="30px" height="30px">
             </a>
             <div class="wsusd__dashboard_user">
-                <p class="fw-bold">{{ Auth::user()->name }}</p>
+                <p class="fw-bold">Anonymous</p>
             </div>
         </div>
     </div>

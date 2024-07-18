@@ -153,7 +153,7 @@
                               <a class="wsus__pro_link" href="{{ route('product-detail', $product->id) }}">
                                   <img src="{{ $product->thumb_image }}" alt="product"
                                       class="img-fluid w-100 img_1" />
-                                  <img src="images/charger_1.jpg" alt="product" class="img-fluid w-100 img_2" />
+                                  <img src="{{ $product->thumb_image }}" alt="product" class="img-fluid w-100 img_2" />
                               </a>
                               <ul class="wsus__single_pro_icon">
                                   <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
@@ -163,11 +163,13 @@
                               </ul>
                               <div class="wsus__product_details">
                                   <a class="wsus__category" href="#">{{ $product->category->name }} </a>
-                                  <a class="wsus__pro_name" href="href="{{ route('product-detail', $product->id) }}">{{ $product->name }}</a>
+                                  <a class="wsus__pro_name"
+                                      href="href="{{ route('product-detail', $product->id) }}">{{ $product->name }}</a>
                                   <div class="price-container d-flex gap-5">
-                                      <p class="wsus__price">{{ $product->price }}</p>
+                                      <p class="wsus__price">{{ number_format($product->discount_price, 0, ',', '.') . 'đ' }}
+                                      </p>
                                       <p class="wsus__price text-danger text-decoration-line-through text-center">
-                                          {{ $product->discount_price }}</p>
+                                          {{ number_format($product->price, 0, ',', '.') . 'đ' }}</p>
                                   </div>
 
                                   <a class="add_cart" href="#">Thêm Vào Giỏ Hàng</a>
