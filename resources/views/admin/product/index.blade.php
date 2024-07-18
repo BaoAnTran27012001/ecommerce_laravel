@@ -30,7 +30,7 @@
                                         <th>Hình ảnh</th>
                                         <th>Tên</th>
                                         <th>Giá Gốc</th>
-                                        <th>Giá Giảm</th>
+                                        <th>Giá Bán</th>
                                         <th>Trạng thái</th>
                                         <th>Hành động</th>
                                     </tr>
@@ -43,8 +43,8 @@
                                                     alt="preview-image">
                                             </td>
                                             <td>{{ $product->name }}</td>
-                                            <td>{{ $product->price }}</td>
-                                            <td>{{ $product->discount_price }}</td>
+                                            <td>{{ number_format($product->price, 0, ',', '.') . 'đ' }}</td>
+                                            <td>{{ number_format($product->discount_price, 0, ',', '.') . 'đ' }}</td>
                                             <td>
                                                 @if ($product->status)
                                                     <div class="badge badge-success">Hoạt động</div>

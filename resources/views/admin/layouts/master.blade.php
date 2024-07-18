@@ -85,6 +85,7 @@
     <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
     <script src="{{ asset('backend/assets/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('backend/assets/js/page/index-0.js') }}"></script>
@@ -152,6 +153,18 @@
                     }
                 });
             })
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.price').maskMoney({
+                thousands: '.',
+                precision: 0
+            });
+            $('.discount_price').maskMoney({
+                thousands: '.',
+                precision: 0
+            });
         });
     </script>
     @stack('scripts')

@@ -6,8 +6,9 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImagesController;
 use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Localization\LocalizationController;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,8 @@ Route::post('profile/update/password',[ProfileController::class,'updatePassword'
 
 // Slider Controller
 Route::resource('slider', SliderController::class);
+// User Controller
+Route::resource('user', UserController::class);
 // Role Controller
 Route::resource('role', RoleController::class);
 // Localization Route

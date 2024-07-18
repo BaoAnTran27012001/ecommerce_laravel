@@ -106,6 +106,8 @@ class ProductController extends Controller
             'description' => ['required'],
             'status' => ['required']
         ]);
+        $convert_price = (int) (str_ireplace('.', '', $request->price));
+        $convert_discount_price = (int) (str_ireplace('.', '', $request->discount_price));
         $product = Product::findOrFail($id);
         $imagePath = $this->updateImage($request,'image','uploads',$product->thumb_image);
 
@@ -113,8 +115,8 @@ class ProductController extends Controller
         $product->thumb_image = empty(!$imagePath) ? $imagePath : $product->thumb_image;
         $product->category_id = $request->category;
         $product->brand_id = $request->brand;
-        $product->price = $request->price;
-        $product->discount_price = $request->discount_price;
+        $product->price = $convert_price;
+        $product->discount_price = $convert_discount_price;
         $product->inventory_quantity = $request->inventory_quantity;
         $product->input_quantity = $request->input_quantity;
         $product->output_quantity = $request->output_quantity;
