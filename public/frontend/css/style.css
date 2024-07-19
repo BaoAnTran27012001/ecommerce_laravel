@@ -9450,3 +9450,13 @@ a:not([href]):not([class]):hover {
 }
 
 /* extra css end here */
+.product_qty_wrapper{
+    display: flex;
+    gap: 6px;
+
+}
+.product_qty_wrapper .product_qty{
+    width: 43px;
+    height: 43px;
+    padding-left: 5px;
+}

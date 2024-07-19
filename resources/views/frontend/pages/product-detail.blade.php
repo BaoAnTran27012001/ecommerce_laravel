@@ -3,9 +3,6 @@
 
 
 @section('content')
-    <!--==========================
-                                                                              PRODUCT MODAL VIEW START
-                                                                            ===========================-->
     <section class="product_popup_modal">
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
@@ -143,13 +140,13 @@
         </div>
     </section>
     <!--==========================
-                                                                              PRODUCT MODAL VIEW END
-                                                                            ===========================-->
+                                                                                                      PRODUCT MODAL VIEW END
+                                                                                                    ===========================-->
 
 
     <!--============================
-                                                                                BREADCRUMB START
-                                                                            ==============================-->
+                                                                                                        BREADCRUMB START
+                                                                                                    ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -167,13 +164,13 @@
         </div>
     </section>
     <!--============================
-            BREADCRUMB END
-        ==============================-->
+                                    BREADCRUMB END
+                                ==============================-->
 
 
     <!--============================
-        PRODUCT DETAILS START
-        ==============================-->
+                                PRODUCT DETAILS START
+                                ==============================-->
     <section id="wsus__product_details">
         <div class="container">
             <div class="wsus__details_bg">
@@ -207,22 +204,26 @@
                             <a class="title">{{ $product->name }}</a>
                             <p class="wsus__stock_area"><span class="in_stock">trong kho</span>
                                 ({{ $product->inventory_quantity }})</p>
-                            <h4>{{ $product->discount_price }} <del>{{ $product->price }}</del></h4>
+                            <h4>{{ number_format($product->discount_price, 0, ',', '.') . 'đ'  }}
+                                <del>{{ number_format($product->price, 0, ',', '.') . 'đ' }}</del>
+                            </h4>
+                            <form class="shopping-cart-form">
+                                <div class="wsus__quentity">
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <h5>số lượng :</h5>
+                                    <div class="select_number">
+                                        <input class="number_area" type="text" min="1" max="100"
+                                            value="1" name="qty" />
+                                    </div>
+                                    {{-- <h3>$50.00</h3> --}}
+                                </div>
+                                <ul class="wsus__button_area">
+                                    <li><button type="submit" class="add_cart">thêm giỏ hàng</button></li>
+                                    <li><a class="buy_now" href="#">mua ngay</a></li>
+                                    <li><a href="#"><i class="fal fa-heart"></i></a></li>
 
-                            <div class="wsus__quentity">
-                                <h5>số lượng :</h5>
-                                <form class="select_number">
-                                    <input class="number_area" type="text" min="1" max="100"
-                                        value="1" />
-                                </form>
-                                {{-- <h3>$50.00</h3> --}}
-                            </div>
-                            <ul class="wsus__button_area">
-                                <li><a class="add_cart" href="#">thêm giỏ hàng</a></li>
-                                <li><a class="buy_now" href="#">mua ngay</a></li>
-                                <li><a href="#"><i class="fal fa-heart"></i></a></li>
-
-                            </ul>
+                                </ul>
+                            </form>
                             <p class="brand_model"><span>thương hiệu :</span> {{ $product->brand->name }}</p>
                             <p class="description">{{ $product->description }}</p>
                         </div>
@@ -235,13 +236,13 @@
         </div>
     </section>
     <!--============================
-                    PRODUCT DETAILS END
-                 ==============================-->
+                                            PRODUCT DETAILS END
+                                         ==============================-->
 
 
     <!--============================
-                                                                                RELATED PRODUCT START
-                                                                            ==============================-->
+                                                                                                        RELATED PRODUCT START
+                                                                                                    ==============================-->
     <section id="wsus__flash_sell">
         <div class="container">
             <div class="row">
@@ -288,7 +289,34 @@
             </div>
         </div>
     </section>
-    <!--============================
-                                                                                RELATED PRODUCT END
-                                                                            ==============================-->
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('.shopping-cart-form').on('submit', function(e) {
+                e.preventDefault();
+
+                let formData = $(this).serialize();
+
+                console.log(formData);
+                $.ajax({
+                    method: "POST",
+                    data: formData,
+                    url: "{{ route('add-to-cart') }}",
+                    success: function(data) {
+
+                    },
+                    error: function(params) {
+
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

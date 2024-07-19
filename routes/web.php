@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
@@ -25,7 +26,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 
 
 
-Route::group(['middleware' => ['auth','verified'],'prefix'=>'user','as'=>'user.'],function(){
+Route::group(['prefix'=>'user','as'=>'user.'],function(){
     Route::get('dashboard',[UserDashboardController::class,'index'])->name('dashboard');
     Route::get('profile',[UserProfileController::class,'index'])->name('profile');
     Route::put('profile',[UserProfileController::class,'updateProfile'])->name('profile.update');
@@ -53,3 +54,9 @@ Route::get('product-detail/{id}',[FrontendProductController::class,'showProduct'
 
 // Set Language For User
 Route::get('locale/{lang}',[LocalizationController::class,'setLang'])->middleware('lang')->name('lang');
+
+// Add to Cart Route
+
+Route::post('add-to-cart', [CartController::class,'addToCart'])->name('add-to-cart');
+Route::get('cart-details', [CartController::class,'cartDetails'])->name('cart-details');
+Route::post('cart/update-quantity', [CartController::class,'updateProductQuantity'])->name('cart.update-quantity');
