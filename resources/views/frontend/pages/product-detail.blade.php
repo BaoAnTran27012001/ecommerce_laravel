@@ -3,7 +3,6 @@
 
 
 @section('content')
-
     <section class="product_popup_modal">
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
@@ -141,13 +140,13 @@
         </div>
     </section>
     <!--==========================
-                                                                                              PRODUCT MODAL VIEW END
-                                                                                            ===========================-->
+                                                                                                      PRODUCT MODAL VIEW END
+                                                                                                    ===========================-->
 
 
     <!--============================
-                                                                                                BREADCRUMB START
-                                                                                            ==============================-->
+                                                                                                        BREADCRUMB START
+                                                                                                    ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -165,13 +164,13 @@
         </div>
     </section>
     <!--============================
-                            BREADCRUMB END
-                        ==============================-->
+                                    BREADCRUMB END
+                                ==============================-->
 
 
     <!--============================
-                        PRODUCT DETAILS START
-                        ==============================-->
+                                PRODUCT DETAILS START
+                                ==============================-->
     <section id="wsus__product_details">
         <div class="container">
             <div class="wsus__details_bg">
@@ -205,7 +204,9 @@
                             <a class="title">{{ $product->name }}</a>
                             <p class="wsus__stock_area"><span class="in_stock">trong kho</span>
                                 ({{ $product->inventory_quantity }})</p>
-                            <h4>{{ $product->discount_price }} <del>{{ $product->price }}</del></h4>
+                            <h4>{{ number_format($product->discount_price, 0, ',', '.') . 'đ'  }}
+                                <del>{{ number_format($product->price, 0, ',', '.') . 'đ' }}</del>
+                            </h4>
                             <form class="shopping-cart-form">
                                 <div class="wsus__quentity">
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -235,13 +236,13 @@
         </div>
     </section>
     <!--============================
-                                    PRODUCT DETAILS END
-                                 ==============================-->
+                                            PRODUCT DETAILS END
+                                         ==============================-->
 
 
     <!--============================
-                                                                                                RELATED PRODUCT START
-                                                                                            ==============================-->
+                                                                                                        RELATED PRODUCT START
+                                                                                                    ==============================-->
     <section id="wsus__flash_sell">
         <div class="container">
             <div class="row">

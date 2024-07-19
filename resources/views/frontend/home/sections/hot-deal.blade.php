@@ -153,10 +153,12 @@
                               <a class="wsus__pro_link" href="{{ route('product-detail', $product->id) }}">
                                   <img src="{{ $product->thumb_image }}" alt="product"
                                       class="img-fluid w-100 img_1" />
-                                  <img src="{{ $product->thumb_image }}" alt="product" class="img-fluid w-100 img_2" />
+                                  <img src="{{ $product->thumb_image }}" alt="product"
+                                      class="img-fluid w-100 img_2" />
                               </a>
                               <ul class="wsus__single_pro_icon">
-                                  <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                  <li><a href="#" data-bs-toggle="modal"
+                                          data-bs-target="#exampleModal-{{ $product->id }}"><i
                                               class="far fa-eye"></i></a></li>
                                   <li><a href="#"><i class="far fa-heart"></i></a></li>
                                   <li><a href="#"><i class="far fa-random"></i></a>
@@ -166,7 +168,8 @@
                                   <a class="wsus__pro_name"
                                       href="href="{{ route('product-detail', $product->id) }}">{{ $product->name }}</a>
                                   <div class="price-container d-flex gap-5">
-                                      <p class="wsus__price">{{ number_format($product->discount_price, 0, ',', '.') . 'đ' }}
+                                      <p class="wsus__price">
+                                          {{ number_format($product->discount_price, 0, ',', '.') . 'đ' }}
                                       </p>
                                       <p class="wsus__price text-danger text-decoration-line-through text-center">
                                           {{ number_format($product->price, 0, ',', '.') . 'đ' }}</p>
@@ -453,6 +456,76 @@
           </div>
       </div>
   </section>
-  <!--============================
-                        HOT DEALS END
-                    ==============================-->
+  <!--============================ HOT DEALS END  ==============================-->
+
+
+  <!--========================== PRODUCT MODAL VIEW START ===========================-->
+  @foreach ($products as $product)
+      <section class="product_popup_modal">
+          <div class="modal fade" id="exampleModal-{{ $product->id }}" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-body">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                                  class="far fa-times"></i></button>
+                          <div class="row">
+                              <div class="col-xl-6 col-12 col-sm-10 col-md-8 col-lg-6 m-auto display">
+                                  <div class="wsus__quick_view_img">
+                                      <div class="row modal_slider">
+                                          <div class="col-xl-12">
+                                              <div class="modal_slider_img">
+                                                  <img src="{{ asset($product->thumb_image) }}"
+                                                      alt="{{ $product->name }}" class="img-fluid w-100">
+                                              </div>
+                                          </div>
+                                          @foreach ($product->imageGallery as $image)
+                                              <div class="col-xl-12">
+                                                  <div class="modal_slider_img">
+                                                      <img src="{{ asset($image->image_path) }}"
+                                                          alt="{{ $product->name }}" class="img-fluid w-100">
+                                                  </div>
+                                              </div>
+                                          @endforeach
+
+
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
+                                  <div class="wsus__pro_details_text">
+                                      <a class="title" href="#">{{ $product->name }}</a>
+                                      <p class="wsus__stock_area"><span class="in_stock">trong kho</span>
+                                          ({{ $product->inventory_quantity }})
+                                      </p>
+                                      <h4>{{ $product->discount_price }} <del>{{ $product->price }}</del></h4>
+                                      <p class="description">{{ $product->description }}
+                                      </p>
+
+
+                                      <div class="wsus__quentity">
+                                          <h5>số lượng :</h5>
+                                          <form class="select_number">
+                                              <input class="number_area" type="text" min="1"
+                                                  max="100" value="1" />
+                                          </form>
+                                          <h3>$50.00</h3>
+                                      </div>
+
+                                      <ul class="wsus__button_area">
+                                          <li><a class="add_cart" href="#">thêm vào giỏ hàng</a></li>
+                                          <li><a class="buy_now" href="#">mua ngay</a></li>
+                                          <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                      </ul>
+                                      <p class="brand_model"><span>thương hiệu :</span> {{ $product->brand->name }}
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+  @endforeach
+
+  <!--========================== PRODUCT MODAL VIEW END ===========================-->

@@ -58,3 +58,5 @@ Route::get('locale/{lang}',[LocalizationController::class,'setLang'])->middlewar
 // Add to Cart Route
 
 Route::post('add-to-cart', [CartController::class,'addToCart'])->name('add-to-cart');
+Route::get('cart-details', [CartController::class,'cartDetails'])->name('cart-details');
+Route::post('cart/update-quantity', [CartController::class,'updateProductQuantity'])->name('cart.update-quantity');
