@@ -18,6 +18,7 @@ class CartController extends Controller
         $cartData['weight'] = 0;
         $cartData['price'] = $product->discount_price ? $product->discount_price:$product->price;
         $cartData['options']['image'] = $product->thumb_image;
+        $cartData['options']['discount_price'] = $product->price;
         Cart::add($cartData);
         return response(['status' => 'success','message'=>'Thêm giỏ hàng thành công']);
     }
@@ -36,5 +37,26 @@ class CartController extends Controller
         $product = Cart::get($rowId);
         $total = $product->price * $product->qty;
         return $total;
+    }
+    public function clearCart(){
+        Cart::destroy();
+        return response(['status'=>'success','message' => 'Xoá Giỏ Hàng Thành Công']);
+    }
+    public function removeProduct(String $rowId){
+        Cart::remove($rowId);
+        return redirect()->back();
+    }
+    public function getCartCount(){
+        return Cart::content()->count();
+    }
+    public function getCartProducts(){
+        $priceArr = [];
+        $originalPriceArr = [];
+        $cartproducts = Cart::content();
+        foreach($cartproducts as $item){
+            $priceArr[$item->id] = number_format($item->price, 0, ',', '.') . 'đ';
+            $originalPriceArr[$item->id] = number_format($item->options->discount_price, 0, ',', '.') . 'đ';
+        }
+        return response(['cartproducts'=>$cartproducts,'priceArr'=>$priceArr,'originalPriceArr'=>$originalPriceArr]);
     }
 }

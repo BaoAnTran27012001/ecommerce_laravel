@@ -59,4 +59,8 @@ Route::get('locale/{lang}',[LocalizationController::class,'setLang'])->middlewar
 
 Route::post('add-to-cart', [CartController::class,'addToCart'])->name('add-to-cart');
 Route::get('cart-details', [CartController::class,'cartDetails'])->name('cart-details');
+Route::get('clear-cart', [CartController::class,'clearCart'])->name('clear.cart');
+Route::get('cart/remove-product/{id}', [CartController::class,'removeProduct'])->name('cart.remove-product');
+Route::get('cart-count', [CartController::class,'getCartCount'])->name('cart-count');
+Route::get('cart-products', [CartController::class,'getCartProducts'])->name('cart-products');
 Route::post('cart/update-quantity', [CartController::class,'updateProductQuantity'])->name('cart.update-quantity');
