@@ -140,13 +140,13 @@
         </div>
     </section>
     <!--==========================
-                                                                                                                                                                                                                                      PRODUCT MODAL VIEW END
-                                                                                                                                                                                                                                    ===========================-->
+                                                                                                                                                                                                                                                                                  PRODUCT MODAL VIEW END
+                                                                                                                                                                                                                                                                                ===========================-->
 
 
     <!--============================
-                                                                                                                                                                                                                                        BREADCRUMB START
-                                                                                                                                                                                                                                    ==============================-->
+                                                                                                                                                                                                                                                                                    BREADCRUMB START
+                                                                                                                                                                                                                                                                                ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -164,13 +164,13 @@
         </div>
     </section>
     <!--============================
-                                                                                                                                                                    BREADCRUMB END
-                                                                                                                                                                ==============================-->
+                                                                                                                                                                                                                BREADCRUMB END
+                                                                                                                                                                                                            ==============================-->
 
 
     <!--============================
-                                                                                                                                                                PRODUCT DETAILS START
-                                                                                                                                                                ==============================-->
+                                                                                                                                                                                                            PRODUCT DETAILS START
+                                                                                                                                                                                                            ==============================-->
     <section id="wsus__product_details">
         <div class="container">
             <div class="wsus__details_bg">
@@ -236,13 +236,13 @@
         </div>
     </section>
     <!--============================
-                                                                                                                                                                            PRODUCT DETAILS END
-                                                                                                                                                                         ==============================-->
+                                                                                                                                                                                                                        PRODUCT DETAILS END
+                                                                                                                                                                                                                     ==============================-->
 
 
     <!--============================
-                                                                                                                                                                                                                                        RELATED PRODUCT START
-                                                                                                                                                                                                                                    ==============================-->
+                                                                                                                                                                                                                                                                                    RELATED PRODUCT START
+                                                                                                                                                                                                                                                                                ==============================-->
     <section id="wsus__flash_sell">
         <div class="container">
             <div class="row">
@@ -292,82 +292,5 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $('.shopping-cart-form').on('submit', function(e) {
-                e.preventDefault();
-                let formData = $(this).serialize();
-                $.ajax({
-                    method: "POST",
-                    data: formData,
-                    url: "{{ route('add-to-cart') }}",
-                    success: function(data) {
-                        getCartCount();
-                        fetchSidebarCartProducts();
-                        toastr.success(data.message);
-                    },
-                    error: function(params) {
-
-                    }
-                });
-            });
-
-            function getCartCount() {
-                $.ajax({
-                    method: "GET",
-                    url: "{{ route('cart-count') }}",
-                    success: function(data) {
-                        $('#cart_count').text(data);
-                    },
-                    error: function(params) {
-
-                    }
-                });
-            }
-
-            function fetchSidebarCartProducts(e) {
-                $.ajax({
-                    method: "GET",
-                    url: "{{ route('cart-products') }}",
-                    success: function(data) {
-                        $('.mini_cart_wrapper').html("");
-                        let html = '';
-                        for (let item in data.cartproducts) {
-                            let product = data.cartproducts[item];
-                            let productId = data.cartproducts[item].id;
-                            let priceArr = data.priceArr;
-                            let originalPriceArr = data.originalPriceArr;
-                            html += `
-                                 <li>
-                    <div class="wsus__cart_img">
-                        <a href="{{ url('product-detail') }}/${productId}"><img
-                                src="{{ asset('/') }}${product.options.image}" alt="product"
-                                class="img-fluid w-100"></a>
-                        <a class="wsis__del_icon remove_sidebar_product" data-rowId="${product.rowId}"
-                            href="#"><i class="fas fa-minus-circle"></i></a>
-                    </div>
-                    <div class="wsus__cart_text">
-                        <a class="wsus__cart_title"
-                            href="{{ url('product-detail') }}/${productId}">${product.name}</a>
-                        <p>${priceArr[productId]}
-                            <del>${originalPriceArr[productId]}</del>
-                        </p>
-                    </div>
-                </li>
-                            `
-                        }
-                        $('.mini_cart_wrapper').html(html);
-                    },
-                    error: function(params) {
-
-                    }
-                });
-            }
-        });
-    </script>
+   
 @endpush

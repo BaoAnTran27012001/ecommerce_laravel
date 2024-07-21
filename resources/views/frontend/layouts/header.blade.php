@@ -41,28 +41,34 @@
         <h4>Giỏ Hàng <span class="wsus_close_mini_cart"><i class="far fa-times"></i></span></h4>
         <ul class="mini_cart_wrapper">
             @foreach (Cart::content() as $sidebarProduct)
-                <li>
+                <li id="mini_cart_{{ $sidebarProduct->rowId }}">
                     <div class="wsus__cart_img">
                         <a href="{{ route('product-detail', $sidebarProduct->id) }}"><img
                                 src="{{ asset($sidebarProduct->options->image) }}" alt="product"
                                 class="img-fluid w-100"></a>
-                        <a class="wsis__del_icon remove_sidebar_product" data-rowId="{{ $sidebarProduct->rowId }}"
+                        <a class="wsis__del_icon remove_sidebar_product" data-id="{{ $sidebarProduct->rowId }}"
                             href="#"><i class="fas fa-minus-circle"></i></a>
                     </div>
                     <div class="wsus__cart_text">
                         <a class="wsus__cart_title"
-                            href="{{ route('product-detail', $sidebarProduct->id) }}">{{ $sidebarProduct->name }}</a>
+                            href="{{ route('product-detail', $sidebarProduct->id) }}">{{ $sidebarProduct->name }} <span class="fw-bold"
+                                id="product_sidebar_qty" data-id="{{ $sidebarProduct->qty }}">({{ $sidebarProduct->qty }})</span></a>
                         <p>{{ number_format($sidebarProduct->price, 0, ',', '.') . 'đ' }}
                             <del>{{ number_format($sidebarProduct->options->discount_price, 0, ',', '.') . 'đ' }}</del>
                         </p>
                     </div>
                 </li>
             @endforeach
+            @if (Cart::content()->count() === 0)
+                <li class="text-center">Giỏ Hàng Trống</li>
+            @endif
         </ul>
-        <h5>Tổng Cộng<span>$3540</span></h5>
-        <div class="wsus__minicart_btn_area">
-            <a class="common_btn" href="{{ route('cart-details') }}">xem giỏ hàng</a>
-            <a class="common_btn" href="check_out.html">checkout</a>
+        <div class="mini_cart_actions {{ Cart::content()->count() === 0 ? 'd-none' : '' }}">
+            <h5>Tổng Cộng<span id="mini_cart_subtotal">$3540</span></h5>
+            <div class="wsus__minicart_btn_area">
+                <a class="common_btn" href="{{ route('cart-details') }}">xem giỏ hàng</a>
+                <a class="common_btn" href="check_out.html">thanh toán</a>
+            </div>
         </div>
     </div>
 
@@ -70,4 +76,21 @@
 <!--============================
         HEADER END
     ==============================-->
-
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: "GET",
+                url: "{{ route('cart.sidebar-product-total') }}",
+                success: function (data) {
+                    $('#mini_cart_subtotal').text(data);
+                }
+            });
+        });
+    </script>
+@endpush

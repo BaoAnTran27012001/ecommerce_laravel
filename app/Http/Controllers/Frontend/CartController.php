@@ -20,7 +20,7 @@ class CartController extends Controller
         $cartData['options']['image'] = $product->thumb_image;
         $cartData['options']['discount_price'] = $product->price;
         Cart::add($cartData);
-        return response(['status' => 'success','message'=>'Thêm giỏ hàng thành công']);
+        return response(['status' => 'success','message'=>'Thêm giỏ hàng thành công','qty'=>$request->qty]);
     }
     // Show Cart Page
     public function cartDetails(){
@@ -37,6 +37,14 @@ class CartController extends Controller
         $product = Cart::get($rowId);
         $total = $product->price * $product->qty;
         return $total;
+    }
+    //cartTotal
+    public function cartTotal(){
+        $total = 0;
+        foreach(Cart::content() as $product){
+            $total += $this->getProductTotal($product->rowId);
+        }
+        return number_format($total, 0, ',', '.') . 'đ';
     }
     public function clearCart(){
         Cart::destroy();
@@ -58,5 +66,9 @@ class CartController extends Controller
             $originalPriceArr[$item->id] = number_format($item->options->discount_price, 0, ',', '.') . 'đ';
         }
         return response(['cartproducts'=>$cartproducts,'priceArr'=>$priceArr,'originalPriceArr'=>$originalPriceArr]);
+    }
+    public function removeSidebarProduct(Request $request){
+        Cart::remove($request->rowId);
+        return response(['status'=>'success']);
     }
 }
