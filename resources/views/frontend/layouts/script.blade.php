@@ -14,13 +14,15 @@
                 data: formData,
                 url: "{{ route('add-to-cart') }}",
                 success: function(data) {
-                    getCartCount();
-                    fetchSidebarCartProducts();
-                    $('.mini_cart_actions').removeClass('d-none');
-                    let quantity = data.qty;
-                    let sidebarQuantity = $('#product_sidebar_qty').data('id');
-                    console.log(sidebarQuantity);
-                    toastr.success(data.message);
+                    if (data.status === 'success') {
+                        getCartCount();
+                        fetchSidebarCartProducts();
+                        $('.mini_cart_actions').removeClass('d-none');
+                        toastr.success(data.message);
+                    } else if (data.status === 'error') {
+                        toastr.error(data.message);
+                    }
+
                 },
                 error: function(params) {
 
@@ -116,5 +118,6 @@
                 }
             });
         }
+       
     });
 </script>

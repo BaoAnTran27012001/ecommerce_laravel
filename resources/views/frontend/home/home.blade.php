@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-   
+
 
 
     {{-- Banner Slider Start --}}
@@ -53,7 +53,5 @@
     @include('frontend.home.sections.weekly-best-item')
     {{-- Weekly Best Item End --}}
 
-    {{-- Blog Start --}}
-    @include('frontend.home.sections.blog')
-    {{-- Blog End --}}
+   
 @endsection

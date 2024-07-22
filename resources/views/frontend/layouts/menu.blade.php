@@ -17,12 +17,11 @@
                           @foreach ($categories as $category)
                               <li><a href="#"><i class="{{ $category->icon }}"></i>{{ $category->name }}</a></li>
                           @endforeach
-                          <li><a href="#"><i class="fal fa-gem"></i> View All Categories</a></li>
+                          <li><a href="#"><i class="fal fa-gem"></i>Xem Tất Cả Danh Mục</a></li>
                       </ul>
 
                       <ul class="wsus__menu_item">
                           <li><a class="active" href="index.html">trang chủ</a></li>
-                          <li><a href="product_grid_view.html">cửa hàng <i class="fas fa-caret-down"></i></a>
                               <div class="wsus__mega_menu">
                                   <div class="row">
                                       {{-- category --}}
@@ -46,7 +45,6 @@
                                   </div>
                               </div>
                           </li>
-                          <li><a href="blog.html">blog</a></li>
                           <li><a href="track_order.html">theo dõi đơn hàng</a></li>
                       </ul>
                       <ul class="wsus__menu_item wsus__menu_item_right">

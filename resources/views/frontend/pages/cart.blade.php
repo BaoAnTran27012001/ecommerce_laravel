@@ -3,8 +3,8 @@
 
 @section('content')
     <!--============================
-                                                                                        BREADCRUMB START
-                                                                                    ==============================-->
+                                                                                                                    BREADCRUMB START
+                                                                                                                ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -12,9 +12,7 @@
                     <div class="col-12">
                         <h4>Giỏ Hàng</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
-                            <li><a href="#">cart view</a></li>
+                            <li><a href="{{ route('home') }}">trang chủ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -22,13 +20,13 @@
         </div>
     </section>
     <!--============================
-                                                                                        BREADCRUMB END
-                                                                                    ==============================-->
+                                                                                                                    BREADCRUMB END
+                                                                                                                ==============================-->
 
 
     <!--============================
-                                                                                        CART VIEW PAGE START
-                                                                                    ==============================-->
+                                                                                                                    CART VIEW PAGE START
+                                                                                                                ==============================-->
     <section id="wsus__cart_view">
         <div class="container">
             <div class="row">
@@ -95,7 +93,8 @@
 
 
                                             <td class="wsus__pro_icon">
-                                                <a href="{{ route('cart.remove-product',$cartItem->rowId) }}"><i class="far fa-times"></i></a>
+                                                <a href="{{ route('cart.remove-product', $cartItem->rowId) }}"><i
+                                                        class="far fa-times"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -115,12 +114,11 @@
                 </div>
                 <div class="col-xl-3">
                     <div class="wsus__cart_list_footer_button" id="sticky_sidebar">
-                        <h6>total cart</h6>
-                        <p>subtotal: <span>$124.00</span></p>
-                        <p>delivery: <span>$00.00</span></p>
-                        <p>discount: <span>$10.00</span></p>
-                        <p class="total"><span>total:</span> <span>$134.00</span></p>
-                        <a class="common_btn mt-4 w-100 text-center" href="check_out.html">checkout</a>
+                        <h6>phiếu tính tiền</h6>
+                        <p>phải trả: <span id="sub_total">{{ cartTotal() }}</span></p>
+                        <p>phí vận chuyển: <span>{{ getShippingCost() }}</span></p>
+                        <p class="total"><span>tổng cộng:</span><span id="bill_total">{{ billTotal() }}</span></p>
+                        <a class="common_btn mt-4 w-100 text-center" href="check_out.html">đặt hàng</a>
                     </div>
                 </div>
             </div>
@@ -154,7 +152,11 @@
                         if (data.status === 'success') {
                             let productId = '#' + rowId;
                             $(productId).text(data.product_total);
+                            renderCartSubTotal();
+                            getBillTotal();
                             toastr.success(data.message)
+                        } else if (data.status === 'error') {
+                            toastr.error(data.message)
                         }
                     },
                     error: function(data) {
@@ -189,7 +191,11 @@
                         if (data.status === 'success') {
                             let productId = '#' + rowId;
                             $(productId).text(data.product_total);
+                            renderCartSubTotal();
+                            getBillTotal();
                             toastr.success(data.message)
+                        } else if (data.status === 'error') {
+                            toastr.error(data.message)
                         }
                     },
                     error: function(data) {
@@ -226,6 +232,29 @@
                     }
                 });
             });
+            // render total cart subtotal
+            function renderCartSubTotal() {
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('cart.sidebar-product-total') }}",
+                    success: function(data) {
+                        $('#sub_total').text(data);
+                    }
+                });
+            }
+            //cart.get-bill-total
+
+            // get billTotal
+
+            function getBillTotal() {
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('cart.get-bill-total') }}",
+                    success: function(data) {
+                        $('#bill_total').text(data);
+                    }
+                });
+            }
         });
     </script>
 @endpush

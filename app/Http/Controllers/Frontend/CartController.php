@@ -11,6 +11,12 @@ class CartController extends Controller
 {
     public function addToCart(Request $request){
         $product = Product::findOrFail($request->product_id);
+        //check product quantity
+        if($product->inventory_quantity == 0){
+            return response(['status'=>'error','message'=>'Sản Phẩm Đã Hết Hàng']);
+        }elseif($product->inventory_quantity < $request->qty){
+            return response(['status'=>'error','message'=>'Không Đủ Số Lượng Trong Kho']);
+        }
         $cartData = [];
         $cartData['id'] = $product->id;
         $cartData['name'] = $product->name;
@@ -28,6 +34,14 @@ class CartController extends Controller
         return view('frontend.pages.cart',compact('cartItems'));
     }
     public function updateProductQuantity(Request $request){
+        $product_id = Cart::get($request->rowId)->id;
+        $product = Product::findOrFail($product_id);
+         //check product quantity
+         if($product->inventory_quantity == 0){
+            return response(['status'=>'error','message'=>'Sản Phẩm Đã Hết Hàng']);
+        }elseif($product->inventory_quantity < $request->qty){
+            return response(['status'=>'error','message'=>'Không Đủ Số Lượng Trong Kho']);
+        }
         Cart::update($request->rowId,$request->quantity);
         $productTotal = $this->getProductTotal($request->rowId);
         return response(['status'=>'success','message'=>'Cập Nhật Số Lượng Thành Công','product_total'=> number_format($productTotal, 0, ',', '.') . 'đ']);
@@ -70,5 +84,13 @@ class CartController extends Controller
     public function removeSidebarProduct(Request $request){
         Cart::remove($request->rowId);
         return response(['status'=>'success']);
+    }
+    public function billTotal(){
+        $total = 0;
+        foreach(Cart::content() as $product){
+            $total += $product->price * $product->qty;
+        }
+        $total += 10000;
+        return number_format($total, 0, ',', '.') . 'đ';
     }
 }
