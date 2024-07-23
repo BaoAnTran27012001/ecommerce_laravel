@@ -1,8 +1,8 @@
    @extends('frontend.layouts.master')
    @section('content')
        <!--============================
-                                                             BREADCRUMB START
-                                                        ==============================-->
+                                                                     BREADCRUMB START
+                                                                ==============================-->
        <section id="wsus__breadcrumb">
            <div class="wsus_breadcrumb_overlay">
                <div class="container">
@@ -18,13 +18,13 @@
            </div>
        </section>
        <!--============================
-                                                            BREADCRUMB END
-                                                        ==============================-->
+                                                                    BREADCRUMB END
+                                                                ==============================-->
 
 
        <!--============================
-                                                           LOGIN/REGISTER PAGE START
-                                                        ==============================-->
+                                                                   LOGIN/REGISTER PAGE START
+                                                                ==============================-->
        <section id="wsus__login_register">
            <div class="container">
                <div class="row">
@@ -80,19 +80,28 @@
                                <div class="tab-pane fade" id="pills-profiles" role="tabpanel"
                                    aria-labelledby="pills-profile-tab2">
                                    <div class="wsus__login">
-                                       <form>
-
+                                       <form action="{{ route('user.register') }}" method="POST">
+                                           @csrf
+                                           @if ($errors->any())
+                                               <div class="alert alert-danger">
+                                                   <ul>
+                                                       @foreach ($errors->all() as $error)
+                                                           <li>{{ $error }}</li>
+                                                       @endforeach
+                                                   </ul>
+                                               </div>
+                                           @endif
                                            <div class="wsus__login_input">
                                                <i class="far fa-envelope"></i>
-                                               <input type="text" placeholder="Email">
+                                               <input type="email" placeholder="Email" name="email">
                                            </div>
                                            <div class="wsus__login_input">
                                                <i class="fas fa-key"></i>
-                                               <input type="text" placeholder="Mật Khẩu">
+                                               <input type="password" placeholder="Mật Khẩu" name="password">
                                            </div>
                                            <div class="wsus__login_input">
                                                <i class="fas fa-key"></i>
-                                               <input type="text" placeholder="Xác Nhận Mật Khẩu">
+                                               <input type="password" placeholder="Xác Nhận Mật Khẩu" name="cf_password">
                                            </div>
                                            <div class="wsus__login_save">
 
@@ -108,6 +117,6 @@
            </div>
        </section>
        <!--============================
-                                                           LOGIN/REGISTER PAGE END
-                                                        ==============================-->
+                                                                   LOGIN/REGISTER PAGE END
+                                                                ==============================-->
    @endsection

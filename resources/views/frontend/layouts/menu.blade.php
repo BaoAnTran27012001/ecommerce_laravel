@@ -22,10 +22,10 @@
 
                       <ul class="wsus__menu_item">
                           <li><a class="active" href="index.html">trang chủ</a></li>
-                              <div class="wsus__mega_menu">
-                                  <div class="row">
-                                      {{-- category --}}
-                                      {{-- <div class="col-xl-3 col-lg-3">
+                          <div class="wsus__mega_menu">
+                              <div class="row">
+                                  {{-- category --}}
+                                  {{-- <div class="col-xl-3 col-lg-3">
                                           <div class="wsus__mega_menu_colum">
                                               <h4>women</h4>
                                               <ul class="wsis__mega_menu_item">
@@ -42,17 +42,15 @@
                                       </div> --}}
 
 
-                                  </div>
                               </div>
+                          </div>
                           </li>
                           <li><a href="track_order.html">theo dõi đơn hàng</a></li>
                       </ul>
                       <ul class="wsus__menu_item wsus__menu_item_right">
                           <li><a href="contact.html">liên hệ</a></li>
-                          @if (Session()->has('loginId'))
-                              <li><a href="{{ route('user.dashboard') }}">tài khoản</a></li>
-                          @endif
-                          @if (Session()->has('loginId'))
+                          @if (Auth::check())
+                              <li><a href="{{ route('user.dashboard') }}">thông tin</a></li>
                               <li>
                                   <form method="POST" action="{{ route('user.logout') }}">
                                       @csrf

@@ -64,6 +64,7 @@ Route::get('user-login', [UserLoginController::class, 'userLoginPage'])->name('u
 
 
 
+Route::post('user-register', [UserLoginController::class, 'userRegister'])->name('user.register');
 Route::post('user-login', [UserLoginController::class, 'userLogin'])->name('user.login');
 
 

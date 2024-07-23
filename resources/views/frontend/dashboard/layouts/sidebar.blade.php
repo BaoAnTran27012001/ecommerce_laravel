@@ -4,7 +4,8 @@
         <i class="far fa-times dash_close"></i>
     </span>
     <ul class="dashboard_link">
-        <li><a class="active" href="{{ route('user.dashboard') }}"><i class="fas fa-tachometer"></i>{{ __('user.Dashboard') }}</a></li>
+        <li><a class="active" href="{{ route('user.dashboard') }}"><i
+                    class="fas fa-tachometer"></i>{{ __('user.Dashboard') }}</a></li>
         <li><a href="dsahboard_order.html"><i class="fas fa-list-ul"></i> {{ __('user.Orders') }}</a></li>
         <li><a href="dsahboard_download.html"><i class="far fa-cloud-download-alt"></i> {{ __('user.Downloads') }}</a>
         </li>
@@ -14,12 +15,11 @@
         <li><a href="dsahboard_address.html"><i class="fal fa-gift-card"></i> {{ __('user.Addresses') }}</a></li>
 
         <li>
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('user.logout') }}">
                 @csrf
-                <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                this.closest('form').submit();"><i
-                        class="far fa-sign-out-alt"></i> {{ __('user.Logout') }}</a>
+                <button type="submit" class="btn btn-dark" style="width: 100%;text-align: left"><i
+                        class="far fa-sign-out-alt"></i>
+                    {{ __('user.Logout') }}</button>
             </form>
         </li>
 

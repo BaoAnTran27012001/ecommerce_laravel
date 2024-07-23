@@ -141,6 +141,11 @@
             @endforeach
         @endif
     </script>
+    <script>
+        @if (session('message'))
+            toastr.success("{{ session('message') }}")
+        @endif
+    </script>
     @include('frontend.layouts.script')
     @stack('scripts')
 </body>
