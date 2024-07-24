@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Controllers\\Backend\\SupplierController' => $baseDir . '/app/Http/Controllers/Backend/SupplierController.php',
     'App\\Http\\Controllers\\Backend\\UserController' => $baseDir . '/app/Http/Controllers/Backend/UserController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\Frontend\\CartController' => $baseDir . '/app/Http/Controllers/Frontend/CartController.php',
     'App\\Http\\Controllers\\Frontend\\FrontendProductController' => $baseDir . '/app/Http/Controllers/Frontend/FrontendProductController.php',
     'App\\Http\\Controllers\\Frontend\\HomeController' => $baseDir . '/app/Http/Controllers/Frontend/HomeController.php',
     'App\\Http\\Controllers\\Frontend\\UserDashboardController' => $baseDir . '/app/Http/Controllers/Frontend/UserDashboardController.php',
