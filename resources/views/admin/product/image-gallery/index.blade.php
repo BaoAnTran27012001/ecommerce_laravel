@@ -24,8 +24,8 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Hình Ảnh </label>
-                                    <input type="file" name="image[]" class="form-control" multiple>
-                                    <input type="hidden" value="{{ $product->id }}" name="product">
+                                    <input type="file" name="image[]" class="form-control" multiple id="multi_images">
+                                    <input type="hidden" value="{{ $product->id }}" name="product" id="product_id">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Tải Hình Ảnh</button>
                             </form>
@@ -65,3 +65,4 @@
         </div>
     </section>
 @endsection
+

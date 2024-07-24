@@ -3,8 +3,8 @@
 
 @section('content')
     <!--============================
-                                                                                BREADCRUMB START
-                                                                            ==============================-->
+                                                                                                                    BREADCRUMB START
+                                                                                                                ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -12,9 +12,7 @@
                     <div class="col-12">
                         <h4>Giỏ Hàng</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
-                            <li><a href="#">cart view</a></li>
+                            <li><a href="{{ route('home') }}">trang chủ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -22,13 +20,13 @@
         </div>
     </section>
     <!--============================
-                                                                                BREADCRUMB END
-                                                                            ==============================-->
+                                                                                                                    BREADCRUMB END
+                                                                                                                ==============================-->
 
 
     <!--============================
-                                                                                CART VIEW PAGE START
-                                                                            ==============================-->
+                                                                                                                    CART VIEW PAGE START
+                                                                                                                ==============================-->
     <section id="wsus__cart_view">
         <div class="container">
             <div class="row">
@@ -60,7 +58,7 @@
 
 
                                         <th class="wsus__pro_icon">
-                                            <a href="#" class="common_btn">Xoá Giỏ Hàng</a>
+                                            <a href="#" class="common_btn clear_cart">Xoá Giỏ Hàng</a>
                                         </th>
                                     </tr>
                                     @foreach ($cartItems as $cartItem)
@@ -95,12 +93,20 @@
 
 
                                             <td class="wsus__pro_icon">
-                                                <a href="#"><i class="far fa-times"></i></a>
+                                                <a href="{{ route('cart.remove-product', $cartItem->rowId) }}"><i
+                                                        class="far fa-times"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
 
 
+                                    @if (count($cartItems) == 0)
+                                        <tr class="d-flex">
+                                            <td class="wsus__pro_icon" style="width: 100%">
+                                                Giỏ Hàng Trống
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -108,19 +114,11 @@
                 </div>
                 <div class="col-xl-3">
                     <div class="wsus__cart_list_footer_button" id="sticky_sidebar">
-                        <h6>total cart</h6>
-                        <p>subtotal: <span>$124.00</span></p>
-                        <p>delivery: <span>$00.00</span></p>
-                        <p>discount: <span>$10.00</span></p>
-                        <p class="total"><span>total:</span> <span>$134.00</span></p>
-
-                        <form>
-                            <input type="text" placeholder="Coupon Code">
-                            <button type="submit" class="common_btn">apply</button>
-                        </form>
-                        <a class="common_btn mt-4 w-100 text-center" href="check_out.html">checkout</a>
-                        <a class="common_btn mt-1 w-100 text-center" href="product_grid_view.html"><i
-                                class="fab fa-shopify"></i> go shop</a>
+                        <h6>phiếu tính tiền</h6>
+                        <p>phải trả: <span id="sub_total">{{ cartTotal() }}</span></p>
+                        <p>phí vận chuyển: <span>{{ getShippingCost() }}</span></p>
+                        <p class="total"><span>tổng cộng:</span><span id="bill_total">{{ billTotal() }}</span></p>
+                        <a class="common_btn mt-4 w-100 text-center" href="check_out.html">đặt hàng</a>
                     </div>
                 </div>
             </div>
@@ -154,7 +152,11 @@
                         if (data.status === 'success') {
                             let productId = '#' + rowId;
                             $(productId).text(data.product_total);
+                            renderCartSubTotal();
+                            getBillTotal();
                             toastr.success(data.message)
+                        } else if (data.status === 'error') {
+                            toastr.error(data.message)
                         }
                     },
                     error: function(data) {
@@ -169,7 +171,7 @@
                 let input = $(this).siblings('.product_qty');
                 let quantity = parseInt(input.val()) - 1;
                 let rowId = input.data('rowid');
-                if(quantity < 1){
+                if (quantity < 1) {
                     quantity = 1;
                 }
                 input.val(quantity);
@@ -189,7 +191,11 @@
                         if (data.status === 'success') {
                             let productId = '#' + rowId;
                             $(productId).text(data.product_total);
+                            renderCartSubTotal();
+                            getBillTotal();
                             toastr.success(data.message)
+                        } else if (data.status === 'error') {
+                            toastr.error(data.message)
                         }
                     },
                     error: function(data) {
@@ -197,6 +203,58 @@
                     }
                 });
             });
+            $('.clear_cart').on('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: "Bạn Chắc Không ?",
+                    text: "Hành Động Này Sẽ Xoá Giỏ Hàng Của Bạn",
+                    icon: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "Huỷ",
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Có!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "get",
+                            url: "{{ route('clear.cart') }}",
+                            success: function(data) {
+                                if (data.status === 'success') {
+                                    window.location.reload();
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        });
+
+                    }
+                });
+            });
+            // render total cart subtotal
+            function renderCartSubTotal() {
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('cart.sidebar-product-total') }}",
+                    success: function(data) {
+                        $('#sub_total').text(data);
+                    }
+                });
+            }
+            //cart.get-bill-total
+
+            // get billTotal
+
+            function getBillTotal() {
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('cart.get-bill-total') }}",
+                    success: function(data) {
+                        $('#bill_total').text(data);
+                    }
+                });
+            }
         });
     </script>
 @endpush

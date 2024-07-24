@@ -29,72 +29,45 @@
                     <div></div>
                     <ul class="wsus__icon_area">
                         <li><a href="wishlist.html"><i class="fal fa-heart"></i><span>05</span></a></li>
-                        <li><a href="compare.html"><i class="fal fa-random"></i><span>03</span></a></li>
-                        <li><a class="wsus__cart_icon" href="#"><i
-                                    class="fal fa-shopping-bag"></i><span>04</span></a></li>
+                        <li><a class="wsus__cart_icon" href="#"><i class="fal fa-shopping-bag"></i><span
+                                    id="cart_count">{{ Cart::content()->count() }}</span></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <div class="wsus__mini_cart">
-        <h4>shopping cart <span class="wsus_close_mini_cart"><i class="far fa-times"></i></span></h4>
-        <ul>
-            <li>
-                <div class="wsus__cart_img">
-                    <a href="#"><img src="images/tab_2.jpg" alt="product" class="img-fluid w-100"></a>
-                    <a class="wsis__del_icon" href="#"><i class="fas fa-minus-circle"></i></a>
-                </div>
-                <div class="wsus__cart_text">
-                    <a class="wsus__cart_title" href="#">apple 9.5" 7 serise tab with full view display</a>
-                    <p>$140 <del>$150</del></p>
-                </div>
-            </li>
-            <li>
-                <div class="wsus__cart_img">
-                    <a href="#"><img src="images/pro4.jpg" alt="product" class="img-fluid w-100"></a>
-                    <a class="wsis__del_icon" href="#"><i class="fas fa-minus-circle"></i></a>
-                </div>
-                <div class="wsus__cart_text">
-                    <a class="wsus__cart_title" href="#">men's fashion casual watch</a>
-                    <p>$130</p>
-                </div>
-            </li>
-            <li>
-                <div class="wsus__cart_img">
-                    <a href="#"><img src="images/pro2.jpg" alt="product" class="img-fluid w-100"></a>
-                    <a class="wsis__del_icon" href="#"><i class="fas fa-minus-circle"></i></a>
-                </div>
-                <div class="wsus__cart_text">
-                    <a class="wsus__cart_title" href="#">men's casual shoes</a>
-                    <p>$140 <del>$150</del></p>
-                </div>
-            </li>
-            <li>
-                <div class="wsus__cart_img">
-                    <a href="#"><img src="images/pro9.jpg" alt="product" class="img-fluid w-100"></a>
-                    <a class="wsis__del_icon" href="#"><i class="fas fa-minus-circle"></i></a>
-                </div>
-                <div class="wsus__cart_text">
-                    <a class="wsus__cart_title" href="#">men's fashion casual sholder bag</a>
-                    <p>$140</p>
-                </div>
-            </li>
-            <li>
-                <div class="wsus__cart_img">
-                    <a href="#"><img src="images/tab_2.jpg" alt="product" class="img-fluid w-100"></a>
-                    <a class="wsis__del_icon" href="#"><i class="fas fa-minus-circle"></i></a>
-                </div>
-                <div class="wsus__cart_text">
-                    <a class="wsus__cart_title" href="#">apple 9.5" 7 serise tab with full view display</a>
-                    <p>$140 <del>$150</del></p>
-                </div>
-            </li>
+        <h4>Giỏ Hàng <span class="wsus_close_mini_cart"><i class="far fa-times"></i></span></h4>
+        <ul class="mini_cart_wrapper">
+            @foreach (Cart::content() as $sidebarProduct)
+                <li id="mini_cart_{{ $sidebarProduct->rowId }}">
+                    <div class="wsus__cart_img">
+                        <a href="{{ route('product-detail', $sidebarProduct->id) }}"><img
+                                src="{{ asset($sidebarProduct->options->image) }}" alt="product"
+                                class="img-fluid w-100"></a>
+                        <a class="wsis__del_icon remove_sidebar_product" data-id="{{ $sidebarProduct->rowId }}"
+                            href="#"><i class="fas fa-minus-circle"></i></a>
+                    </div>
+                    <div class="wsus__cart_text">
+                        <a class="wsus__cart_title"
+                            href="{{ route('product-detail', $sidebarProduct->id) }}">{{ $sidebarProduct->name }} <span class="fw-bold"
+                                id="product_sidebar_qty" data-id="{{ $sidebarProduct->qty }}">({{ $sidebarProduct->qty }})</span></a>
+                        <p>{{ number_format($sidebarProduct->price, 0, ',', '.') . 'đ' }}
+                            <del>{{ number_format($sidebarProduct->options->discount_price, 0, ',', '.') . 'đ' }}</del>
+                        </p>
+                    </div>
+                </li>
+            @endforeach
+            @if (Cart::content()->count() === 0)
+                <li class="text-center">Giỏ Hàng Trống</li>
+            @endif
         </ul>
-        <h5>sub total <span>$3540</span></h5>
-        <div class="wsus__minicart_btn_area">
-            <a class="common_btn" href="{{ route('cart-details') }}">xem giỏ hàng</a>
-            <a class="common_btn" href="check_out.html">checkout</a>
+        <div class="mini_cart_actions {{ Cart::content()->count() === 0 ? 'd-none' : '' }}">
+            <h5>Tổng Cộng<span id="mini_cart_subtotal">$3540</span></h5>
+            <div class="wsus__minicart_btn_area">
+                <a class="common_btn" href="{{ route('cart-details') }}">xem giỏ hàng</a>
+                <a class="common_btn" href="check_out.html">thanh toán</a>
+            </div>
         </div>
     </div>
 
@@ -102,3 +75,21 @@
 <!--============================
         HEADER END
     ==============================-->
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: "GET",
+                url: "{{ route('cart.sidebar-product-total') }}",
+                success: function (data) {
+                    $('#mini_cart_subtotal').text(data);
+                }
+            });
+        });
+    </script>
+@endpush

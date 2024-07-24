@@ -174,8 +174,12 @@
                                       <p class="wsus__price text-danger text-decoration-line-through text-center">
                                           {{ number_format($product->price, 0, ',', '.') . 'đ' }}</p>
                                   </div>
-
-                                  <a class="add_cart" href="#">Thêm Vào Giỏ Hàng</a>
+                                  <form class="shopping-cart-form">
+                                      <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                      <input type="hidden" min="1" max="100"
+                                          value="1" name="qty" />
+                                      <button class="add_cart" type="submit">Thêm Vào Giỏ Hàng</button>
+                                  </form>
                               </div>
                           </div>
                       </div>
@@ -502,20 +506,24 @@
                                       </p>
 
 
-                                      <div class="wsus__quentity">
-                                          <h5>số lượng :</h5>
-                                          <form class="select_number">
-                                              <input class="number_area" type="text" min="1"
-                                                  max="100" value="1" />
-                                          </form>
-                                          <h3>$50.00</h3>
-                                      </div>
+                                      <form class="shopping-cart-form">
+                                          <div class="wsus__quentity">
+                                              <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                              <h5>số lượng :</h5>
+                                              <div class="select_number">
+                                                  <input class="number_area" type="text" min="1"
+                                                      max="100" value="1" name="qty" />
+                                              </div>
+                                              {{-- <h3>$50.00</h3> --}}
+                                          </div>
+                                          <ul class="wsus__button_area">
+                                              <li><button type="submit" class="add_cart">thêm giỏ hàng</button></li>
+                                              <li><a class="buy_now" href="#">mua ngay</a></li>
+                                              <li><a href="#"><i class="fal fa-heart"></i></a></li>
 
-                                      <ul class="wsus__button_area">
-                                          <li><a class="add_cart" href="#">thêm vào giỏ hàng</a></li>
-                                          <li><a class="buy_now" href="#">mua ngay</a></li>
-                                          <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                      </ul>
+                                          </ul>
+                                      </form>
+
                                       <p class="brand_model"><span>thương hiệu :</span> {{ $product->brand->name }}
                                       </p>
                                   </div>

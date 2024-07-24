@@ -11,7 +11,7 @@
                         <h3><i class="far fa-user"></i> {{ __('user.Profile') }}</h3>
                         <div class="wsus__dashboard_profile">
                             <div class="wsus__dash_pro_area">
-                                <h4>basic information</h4>
+                                <h4>thông tin cơ bản</h4>
 
                                 <form action="{{ route('user.profile.update') }}" method="POST"
                                     enctype="multipart/form-data">

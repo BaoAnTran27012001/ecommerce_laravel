@@ -11,6 +11,12 @@ class CartController extends Controller
 {
     public function addToCart(Request $request){
         $product = Product::findOrFail($request->product_id);
+        //check product quantity
+        if($product->inventory_quantity == 0){
+            return response(['status'=>'error','message'=>'Sản Phẩm Đã Hết Hàng']);
+        }elseif($product->inventory_quantity < $request->qty){
+            return response(['status'=>'error','message'=>'Không Đủ Số Lượng Trong Kho']);
+        }
         $cartData = [];
         $cartData['id'] = $product->id;
         $cartData['name'] = $product->name;
@@ -18,8 +24,9 @@ class CartController extends Controller
         $cartData['weight'] = 0;
         $cartData['price'] = $product->discount_price ? $product->discount_price:$product->price;
         $cartData['options']['image'] = $product->thumb_image;
+        $cartData['options']['discount_price'] = $product->price;
         Cart::add($cartData);
-        return response(['status' => 'success','message'=>'Thêm giỏ hàng thành công']);
+        return response(['status' => 'success','message'=>'Thêm giỏ hàng thành công','qty'=>$request->qty]);
     }
     // Show Cart Page
     public function cartDetails(){
@@ -27,6 +34,14 @@ class CartController extends Controller
         return view('frontend.pages.cart',compact('cartItems'));
     }
     public function updateProductQuantity(Request $request){
+        $product_id = Cart::get($request->rowId)->id;
+        $product = Product::findOrFail($product_id);
+         //check product quantity
+         if($product->inventory_quantity == 0){
+            return response(['status'=>'error','message'=>'Sản Phẩm Đã Hết Hàng']);
+        }elseif($product->inventory_quantity < $request->qty){
+            return response(['status'=>'error','message'=>'Không Đủ Số Lượng Trong Kho']);
+        }
         Cart::update($request->rowId,$request->quantity);
         $productTotal = $this->getProductTotal($request->rowId);
         return response(['status'=>'success','message'=>'Cập Nhật Số Lượng Thành Công','product_total'=> number_format($productTotal, 0, ',', '.') . 'đ']);
@@ -36,5 +51,46 @@ class CartController extends Controller
         $product = Cart::get($rowId);
         $total = $product->price * $product->qty;
         return $total;
+    }
+    //cartTotal
+    public function cartTotal(){
+        $total = 0;
+        foreach(Cart::content() as $product){
+            $total += $this->getProductTotal($product->rowId);
+        }
+        return number_format($total, 0, ',', '.') . 'đ';
+    }
+    public function clearCart(){
+        Cart::destroy();
+        return response(['status'=>'success','message' => 'Xoá Giỏ Hàng Thành Công']);
+    }
+    public function removeProduct(String $rowId){
+        Cart::remove($rowId);
+        return redirect()->back();
+    }
+    public function getCartCount(){
+        return Cart::content()->count();
+    }
+    public function getCartProducts(){
+        $priceArr = [];
+        $originalPriceArr = [];
+        $cartproducts = Cart::content();
+        foreach($cartproducts as $item){
+            $priceArr[$item->id] = number_format($item->price, 0, ',', '.') . 'đ';
+            $originalPriceArr[$item->id] = number_format($item->options->discount_price, 0, ',', '.') . 'đ';
+        }
+        return response(['cartproducts'=>$cartproducts,'priceArr'=>$priceArr,'originalPriceArr'=>$originalPriceArr]);
+    }
+    public function removeSidebarProduct(Request $request){
+        Cart::remove($request->rowId);
+        return response(['status'=>'success']);
+    }
+    public function billTotal(){
+        $total = 0;
+        foreach(Cart::content() as $product){
+            $total += $product->price * $product->qty;
+        }
+        $total += 10000;
+        return number_format($total, 0, ',', '.') . 'đ';
     }
 }
