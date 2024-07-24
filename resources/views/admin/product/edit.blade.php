@@ -79,29 +79,32 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Giá Bán</label>
-                                        <input type="text" class="form-control discount_price" value="{{ $product->discount_price }}"
-                                            name="discount_price">
+                                        <input type="text" class="form-control discount_price"
+                                            value="{{ $product->discount_price }}" name="discount_price">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="">Số lượng trong kho</label>
                                                 <input type="number" class="form-control" name="inventory_quantity"
-                                                    min="0" value="{{ $product->inventory_quantity }}">
+                                                    min="0" value="{{ $product->inventory_quantity }}" readonly
+                                                    id="inventory">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="">Số lượng nhập</label>
                                                 <input type="number" class="form-control" name="input_quantity"
-                                                    min="0" value="{{ $product->input_quantity }}">
+                                                    min="0" value="{{ $product->input_quantity }}"
+                                                    id="input_quantity">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="">Số lượng xuất</label>
                                                 <input type="number" class="form-control" name="output_quantity"
-                                                    min="0" value="{{ $product->output_quantity }}">
+                                                    min="0" value="{{ $product->output_quantity }}"
+                                                    id="output_quantity">
                                             </div>
                                         </div>
                                     </div>

@@ -163,6 +163,33 @@
                 thousands: '.',
                 precision: 0
             });
+
+        });
+        $(document).ready(function() {
+            let input_value = $('#input_quantity').val();
+            let output_value = $('#output_quantity').val();
+            let inventory_stock;
+            $('#input_quantity').on('keyup change', function() {
+                input_value = $(this).val();
+                if (input_value !== '' && output_value !== '') {
+                    input_value = +input_value;
+                    output_value = +output_value;
+                    inventory_stock = input_value - output_value;
+                    $('#inventory').trigger('change');
+                    $('#inventory').val(inventory_stock);
+                }
+            });
+            $('#output_quantity').on('keyup change', function() {
+                output_value = $(this).val();
+                if (input_value !== '' && output_value !== '') {
+                    input_value = +input_value;
+                    output_value = +output_value;
+                    inventory_stock = input_value - output_value;
+                    $('#inventory').trigger('change');
+                    $('#inventory').val(inventory_stock);
+                }
+            });
+
         });
     </script>
     @stack('scripts')

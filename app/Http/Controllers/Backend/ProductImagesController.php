@@ -44,7 +44,6 @@ class ProductImagesController extends Controller
             $productImageGallery->product_id = $request->product;
             $productImageGallery->save();
         }
-        toastr('Tải Lên Thành Công !');
         return redirect()->back();
     }
 
