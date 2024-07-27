@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CheckoutController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\GoogleLogin\GoogleLoginController;
 use App\Http\Controllers\Localization\LocalizationController;
 use App\Http\Controllers\ProfileController;
@@ -67,3 +69,12 @@ Route::post('cart/remove-sidebar-product', [CartController::class,'removeSidebar
 Route::get('cart/sidebar-product-total', [CartController::class,'cartTotal'])->name('cart.sidebar-product-total');
 Route::get('cart/get-bill-total', [CartController::class,'billTotal'])->name('cart.get-bill-total');
 Route::post('cart/update-quantity', [CartController::class,'updateProductQuantity'])->name('cart.update-quantity');
+
+
+Route::get('checkout',[CheckoutController::class,'index'])->middleware('userAuthCheck')->name('checkout');
+
+Route::get('wishlist',[WishListController::class,'index'])->middleware('userAuthCheck')->name('wishlist');
+
+Route::get('wishlist/add-to-wishlist',[WishListController::class,'addToWishList'])->middleware('userAuthCheck')->name('wishlist.add');
+
+Route::get('wishlist/remove-from-wishlist/{id}',[WishListController::class,'removeFromWishList'])->middleware('userAuthCheck')->name('wishlist.remove');

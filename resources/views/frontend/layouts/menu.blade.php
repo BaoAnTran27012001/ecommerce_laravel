@@ -81,7 +81,6 @@
 
           <li><a href="wishlist.html"><i class="far fa-heart"></i> <span>2</span></a></li>
 
-          <li><a href="compare.html"><i class="far fa-random"></i> </i><span>3</span></a></li>
       </ul>
       <form>
           <input type="text" placeholder="Tìm Kiếm">
