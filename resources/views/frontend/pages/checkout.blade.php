@@ -4,8 +4,8 @@
 
 @section('content')
     <!--============================
-                                    BREADCRUMB START
-                                ==============================-->
+                                            BREADCRUMB START
+                                        ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -22,16 +22,17 @@
         </div>
     </section>
     <!--============================
-                                    BREADCRUMB END
-                                ==============================-->
+                                            BREADCRUMB END
+                                        ==============================-->
 
 
     <!--============================
-                                    CHECK OUT PAGE START
-                                ==============================-->
+                                            CHECK OUT PAGE START
+                                        ==============================-->
     <section id="wsus__cart_view">
         <div class="container">
-            <form class="wsus__checkout_form">
+            <form class="wsus__checkout_form" method="POST" action="{{ route('checkout.store') }}">
+                @csrf
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">
                         <div class="wsus__check_form">
@@ -39,25 +40,25 @@
                             <div class="row">
                                 <div class="col-md-6 col-lg-12 col-xl-6">
                                     <div class="wsus__check_single_form">
-                                        <input type="text" placeholder="Tên *">
+                                        <input type="text" placeholder="Tên *" name="name">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 col-lg-12 col-xl-6">
                                     <div class="wsus__check_single_form">
                                         <input type="text" placeholder="Điện Thoại *"
-                                            value="{{ Auth::user()->phone ? Auth::user()->phone : '' }}">
+                                            value="{{ Auth::user()->phone ? Auth::user()->phone : '' }}" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-12 col-xl-6">
                                     <div class="wsus__check_single_form">
                                         <input type="email" placeholder="Email *"
-                                            value="{{ Auth::user()->email ? Auth::user()->email : '' }}">
+                                            value="{{ Auth::user()->email ? Auth::user()->email : '' }}" name="email">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-12 col-xl-6">
                                     <div class="wsus__check_single_form">
-                                        <input type="text" placeholder="Địa Chỉ *">
+                                        <input type="text" placeholder="Địa Chỉ *" name="address">
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +71,7 @@
                                 <p>phí vận chuyển: <span>{{ getShippingCost() }}</span></p>
                                 <p><b>tổng cộng:</b> <span><b>{{ billTotal() }}</b></span></p>
                             </div>
-                            <a href="payment.html" class="common_btn">Đặt Hàng</a>
+                            <button type="submit" class="common_btn">Đặt Hàng</button>
                         </div>
                     </div>
                 </div>

@@ -23,6 +23,15 @@
 
                 </ul>
             </li>
+            <li class="dropdown {{ setActive(['admin.order.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Quản lí đơn hàng</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setActive(['admin.order.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.order.index') }}">Đơn Đặt</a></li>
+
+                </ul>
+            </li>
             <li class="dropdown {{ setActive(['admin.slider.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Quản lí trang web</span></a>
@@ -31,7 +40,7 @@
                             href="{{ route('admin.slider.index') }}">Thanh Trượt</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ setActive(['admin.role.*']) }}">
+            <li class="dropdown {{ setActive(['admin.user.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Quản lí người dùng</span></a>
                 <ul class="dropdown-menu">

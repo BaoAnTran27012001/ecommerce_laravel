@@ -73,8 +73,15 @@ Route::post('cart/update-quantity', [CartController::class,'updateProductQuantit
 
 Route::get('checkout',[CheckoutController::class,'index'])->middleware('userAuthCheck')->name('checkout');
 
+Route::get('checkout-success',[CheckoutController::class,'checkoutSuccess'])->middleware('userAuthCheck')->name('checkout.success');
+
+Route::post('checkout',[CheckoutController::class,'store'])->middleware('userAuthCheck')->name('checkout.store');
+
+
 Route::get('wishlist',[WishListController::class,'index'])->middleware('userAuthCheck')->name('wishlist');
 
 Route::get('wishlist/add-to-wishlist',[WishListController::class,'addToWishList'])->middleware('userAuthCheck')->name('wishlist.add');
 
 Route::get('wishlist/remove-from-wishlist/{id}',[WishListController::class,'removeFromWishList'])->middleware('userAuthCheck')->name('wishlist.remove');
+
+

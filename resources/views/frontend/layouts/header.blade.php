@@ -28,7 +28,11 @@
                 <div class="wsus__call_icon_area">
                     <div></div>
                     <ul class="wsus__icon_area">
-                        <li><a href="{{ route('wishlist') }}"><i class="fal fa-heart"></i><span id="wishlist_count">{{ \App\Models\WishList::where('user_id',auth()->user()->id)->count() }}</span></a></li>
+                       @if (!Auth::check())
+                       <li><a href="{{ route('wishlist') }}"><i class="fal fa-heart"></i><span id="wishlist_count">0</span></a></li>
+                       @else
+                       <li><a href="{{ route('wishlist') }}"><i class="fal fa-heart"></i><span id="wishlist_count">{{ \App\Models\WishList::where('user_id',auth()->user()->id)->count() }}</span></a></li>
+                       @endif
                         <li><a class="wsus__cart_icon" href="#"><i class="fal fa-shopping-bag"></i><span
                                     id="cart_count">{{ Cart::content()->count() }}</span></a></li>
                     </ul>

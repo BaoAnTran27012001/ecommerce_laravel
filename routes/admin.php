@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImagesController;
 use App\Http\Controllers\Backend\ProfileController;
@@ -44,4 +45,6 @@ Route::resource('products', ProductController::class);
 Route::resource('products-image-gallery', ProductImagesController::class);
 // API
 Route::get('api/products',[ProductController::class,'spGetProducts'])->name('sp.get-products');
+// Order routes
+Route::resource('order', OrderController::class);
 ?>
