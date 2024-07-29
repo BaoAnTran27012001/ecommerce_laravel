@@ -28,7 +28,11 @@
                 <div class="wsus__call_icon_area">
                     <div></div>
                     <ul class="wsus__icon_area">
-                        <li><a href="wishlist.html"><i class="fal fa-heart"></i><span>05</span></a></li>
+                       @if (!Auth::check())
+                       <li><a href="{{ route('wishlist') }}"><i class="fal fa-heart"></i><span id="wishlist_count">0</span></a></li>
+                       @else
+                       <li><a href="{{ route('wishlist') }}"><i class="fal fa-heart"></i><span id="wishlist_count">{{ \App\Models\WishList::where('user_id',auth()->user()->id)->count() }}</span></a></li>
+                       @endif
                         <li><a class="wsus__cart_icon" href="#"><i class="fal fa-shopping-bag"></i><span
                                     id="cart_count">{{ Cart::content()->count() }}</span></a></li>
                     </ul>
@@ -50,8 +54,9 @@
                     </div>
                     <div class="wsus__cart_text">
                         <a class="wsus__cart_title"
-                            href="{{ route('product-detail', $sidebarProduct->id) }}">{{ $sidebarProduct->name }} <span class="fw-bold"
-                                id="product_sidebar_qty" data-id="{{ $sidebarProduct->qty }}">({{ $sidebarProduct->qty }})</span></a>
+                            href="{{ route('product-detail', $sidebarProduct->id) }}">{{ $sidebarProduct->name }} <span
+                                class="fw-bold" id="product_sidebar_qty"
+                                data-id="{{ $sidebarProduct->qty }}">({{ $sidebarProduct->qty }})</span></a>
                         <p>{{ number_format($sidebarProduct->price, 0, ',', '.') . 'đ' }}
                             <del>{{ number_format($sidebarProduct->options->discount_price, 0, ',', '.') . 'đ' }}</del>
                         </p>
@@ -66,7 +71,6 @@
             <h5>Tổng Cộng<span id="mini_cart_subtotal">$3540</span></h5>
             <div class="wsus__minicart_btn_area">
                 <a class="common_btn" href="{{ route('cart-details') }}">xem giỏ hàng</a>
-                <a class="common_btn" href="check_out.html">thanh toán</a>
             </div>
         </div>
     </div>
@@ -77,7 +81,7 @@
     ==============================-->
 @push('scripts')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -86,7 +90,7 @@
             $.ajax({
                 method: "GET",
                 url: "{{ route('cart.sidebar-product-total') }}",
-                success: function (data) {
+                success: function(data) {
                     $('#mini_cart_subtotal').text(data);
                 }
             });

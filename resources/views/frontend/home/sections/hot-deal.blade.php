@@ -160,8 +160,7 @@
                                   <li><a href="#" data-bs-toggle="modal"
                                           data-bs-target="#exampleModal-{{ $product->id }}"><i
                                               class="far fa-eye"></i></a></li>
-                                  <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                  <li><a href="#"><i class="far fa-random"></i></a>
+                                  <li><a href="{{ route('wishlist.add') }}" class="add_to_wishlist" data-id="{{ $product->id }}"><i class="far fa-heart"></i></a></li>
                               </ul>
                               <div class="wsus__product_details">
                                   <a class="wsus__category" href="#">{{ $product->category->name }} </a>
@@ -176,8 +175,8 @@
                                   </div>
                                   <form class="shopping-cart-form">
                                       <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                      <input type="hidden" min="1" max="100"
-                                          value="1" name="qty" />
+                                      <input type="hidden" min="1" max="100" value="1"
+                                          name="qty" />
                                       <button class="add_cart" type="submit">Thêm Vào Giỏ Hàng</button>
                                   </form>
                               </div>

@@ -3,8 +3,8 @@
 
 @section('content')
     <!--============================
-                                                                                                                    BREADCRUMB START
-                                                                                                                ==============================-->
+                                                                                                                            BREADCRUMB START
+                                                                                                                        ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -20,13 +20,13 @@
         </div>
     </section>
     <!--============================
-                                                                                                                    BREADCRUMB END
-                                                                                                                ==============================-->
+                                                                                                                            BREADCRUMB END
+                                                                                                                        ==============================-->
 
 
     <!--============================
-                                                                                                                    CART VIEW PAGE START
-                                                                                                                ==============================-->
+                                                                                                                            CART VIEW PAGE START
+                                                                                                                        ==============================-->
     <section id="wsus__cart_view">
         <div class="container">
             <div class="row">
@@ -115,10 +115,10 @@
                 <div class="col-xl-3">
                     <div class="wsus__cart_list_footer_button" id="sticky_sidebar">
                         <h6>phiếu tính tiền</h6>
-                        <p>phải trả: <span id="sub_total">{{ cartTotal() }}</span></p>
+                        <p>tạm tính: <span id="sub_total">{{ cartTotal() }}</span></p>
                         <p>phí vận chuyển: <span>{{ getShippingCost() }}</span></p>
                         <p class="total"><span>tổng cộng:</span><span id="bill_total">{{ billTotal() }}</span></p>
-                        <a class="common_btn mt-4 w-100 text-center" href="check_out.html">đặt hàng</a>
+                        <a class="common_btn mt-4 w-100 text-center" href="{{ route('checkout') }}">đặt hàng</a>
                     </div>
                 </div>
             </div>

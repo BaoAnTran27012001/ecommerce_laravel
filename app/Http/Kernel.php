@@ -78,7 +78,6 @@ class Kernel extends HttpKernel
         'lang' => \App\Http\Middleware\LocalizationMiddleware::class
     ];
     protected $routeMiddleware = [
-        'isLoggedIn' => \App\Http\Middleware\UserAuthCheck::class,
-        'alreadyLoggedIn' => \App\Http\Middleware\UserAlreadyLoggedIn::class,
+        'userAuthCheck' => \App\Http\Middleware\UserAuthCheck::class,
     ];
 }
