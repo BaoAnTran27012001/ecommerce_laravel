@@ -10,4 +10,7 @@ class Customer_Order_Detail extends Model
     public $timestamps = false;
     protected $primaryKey = 'order_detail_id';
     use HasFactory;
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
 }

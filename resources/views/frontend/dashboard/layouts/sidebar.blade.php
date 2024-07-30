@@ -6,7 +6,7 @@
     <ul class="dashboard_link">
         <li><a class="active" href="{{ route('user.dashboard') }}"><i
                     class="fas fa-tachometer"></i>{{ __('user.Dashboard') }}</a></li>
-        <li><a href="dsahboard_order.html"><i class="fas fa-list-ul"></i> {{ __('user.Orders') }}</a></li>
+        <li><a href="{{ route('user.order.index') }}"><i class="fas fa-list-ul"></i> {{ __('user.Orders') }}</a></li>
         <li><a href="dsahboard_download.html"><i class="far fa-cloud-download-alt"></i> {{ __('user.Downloads') }}</a>
         </li>
         <li><a href="dsahboard_review.html"><i class="far fa-star"></i> {{ __('user.Reviews') }}</a></li>

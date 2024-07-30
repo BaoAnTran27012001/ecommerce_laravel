@@ -41,7 +41,13 @@ class OrderController extends Controller
     {
         $order = Customer_Order::findOrFail($id);
         $order_detail = Customer_Order::find($id)->orderDetail;
-        return view('admin.order.detail',compact('order','order_detail'));
+        $total = 0;
+        $billTotal = 0;
+        foreach($order_detail as $item){
+            $total += $item->unit_price * $item->quantity;
+        }
+        $billTotal += $total + 10000;
+        return view('admin.order.detail',compact('order','order_detail','total','billTotal'));
     }
 
     /**
