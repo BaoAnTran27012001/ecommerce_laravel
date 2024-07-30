@@ -22,6 +22,7 @@
                                                 <h5>thông tin người nhận</h5>
                                                 <h6>Tên: {{ $order->name }}</h6>
                                                 <p>Email: {{ $order->email }}</p>
+                                                <p>Số Điện Thoại: {{ $order->phone }}</p>
                                                 <p>Thanh Toán:Trả Tiền Mặt</p>
                                             </div>
                                         </div>

@@ -26,14 +26,16 @@
                                             <tr>
                                                 <td class="" style="width: 162px">{{ $item->id }}</td>
                                                 <td class="" style="width: 162px">{{ $item->invoice_no }}</td>
-                                                <td class="" style="width: 162px">{{ $item->date }}</td>
+                                                <td class="" style="width: 162px">
+                                                    {{ date('d/m/Y', strtotime($item->date)) }}</td>
                                                 <td class="" style="width: 162px">{{ $item->name }}</td>
-                                                <td class="" style="width: 162px">{{ $item->phone }}
-                                                </td>
                                                 <td class="" style="width: 162px">{{ $item->address }}
                                                 </td>
+                                                <td class="" style="width: 162px">{{ $item->phone }}
+                                                </td>
                                                 <td class="" style="width: 162px"><a
-                                                        href="{{ route('user.show.order',$item->id) }}">Xem Chi Tiết</a></td>
+                                                        href="{{ route('user.show.order', $item->id) }}">Xem Chi Tiết</a>
+                                                </td>
                                             </tr>
                                         @endforeach
 
