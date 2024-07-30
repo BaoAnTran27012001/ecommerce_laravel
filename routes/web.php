@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CheckoutController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -77,6 +78,11 @@ Route::get('checkout-success',[CheckoutController::class,'checkoutSuccess'])->mi
 
 Route::post('checkout',[CheckoutController::class,'store'])->middleware('userAuthCheck')->name('checkout.store');
 
+
+// User Order Route
+
+Route::get('order',[OrderController::class,'index'])->middleware('userAuthCheck')->name('user.order.index');
+Route::get('order/show/{id}',[OrderController::class,'show'])->middleware('userAuthCheck')->name('user.show.order');
 
 Route::get('wishlist',[WishListController::class,'index'])->middleware('userAuthCheck')->name('wishlist');
 
