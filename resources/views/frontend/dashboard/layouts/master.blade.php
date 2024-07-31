@@ -44,7 +44,7 @@
                     width="30px" height="30px">
             </a>
             <div class="wsusd__dashboard_user">
-                <p class="fw-bold">{{  Auth::user()->username }}</p>
+                <p class="fw-bold">{{  Auth::user()->email }}</p>
             </div>
         </div>
     </div>
