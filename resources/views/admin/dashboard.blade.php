@@ -42,15 +42,15 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Báo cáo</h4>
+                            <h4>Đơn Đặt</h4>
                         </div>
                         <div class="card-body">
-                            1,201
+                            {{$total_order}}
                         </div>
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </section>
 @endsection
