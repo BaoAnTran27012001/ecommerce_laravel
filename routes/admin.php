@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImagesController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\PurchaseOrderController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\UserController;
@@ -47,4 +48,6 @@ Route::resource('products-image-gallery', ProductImagesController::class);
 Route::get('api/products',[ProductController::class,'spGetProducts'])->name('sp.get-products');
 // Order routes
 Route::resource('order', OrderController::class);
+// Purchase Order Route
+Route::resource('purchase', PurchaseOrderController::class);
 ?>

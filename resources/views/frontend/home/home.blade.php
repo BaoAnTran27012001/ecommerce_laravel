@@ -47,11 +47,4 @@
 
 
 
-
-
-    {{-- Weekly Best Item Start --}}
-    @include('frontend.home.sections.weekly-best-item')
-    {{-- Weekly Best Item End --}}
-
-   
 @endsection

@@ -63,7 +63,7 @@
                                                         <th>Mặt Hàng</th>
                                                         <th class="text-center">Đơn Giá</th>
                                                         <th class="text-center">Số Lượng</th>
-                                                        <th class="text-right">Tổng Cộng</th>
+                                                        <th class="text-right">Thành Tiền</th>
                                                     </tr>
                                                     @foreach ($order_detail as $item)
                                                         <tr>

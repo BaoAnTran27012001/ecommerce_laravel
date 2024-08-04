@@ -29,7 +29,8 @@
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.order.*']) }}"><a class="nav-link"
                             href="{{ route('admin.order.index') }}">Đơn Đặt</a></li>
-
+                    <li class="{{ setActive(['admin.purchase.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.purchase.index') }}">Đơn Mua</a></li>
                 </ul>
             </li>
             <li class="dropdown {{ setActive(['admin.slider.*']) }}">

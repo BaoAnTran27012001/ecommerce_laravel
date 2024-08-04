@@ -18,7 +18,7 @@ class ProductController extends Controller
     use ImageUploadTraits;
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(5);
         return view('admin.product.index',compact('products'));
     }
 
