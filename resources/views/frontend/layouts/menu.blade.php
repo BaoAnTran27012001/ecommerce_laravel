@@ -15,13 +15,14 @@
                       </div>
                       <ul class="wsus_menu_cat_item show_home toggle_menu">
                           @foreach ($categories as $category)
-                              <li><a href="#"><i class="{{ $category->icon }}"></i>{{ $category->name }}</a></li>
+                              <li><a href="{{ route('product.index', ['category' => $category->id]) }}"><i
+                                          class="{{ $category->icon }}"></i>{{ $category->name }}</a></li>
                           @endforeach
                           <li><a href="#"><i class="fal fa-gem"></i>Xem Tất Cả Danh Mục</a></li>
                       </ul>
 
                       <ul class="wsus__menu_item">
-                          <li><a class="active" href="index.html">trang chủ</a></li>
+                          <li><a class="active" href="{{ route('home') }}">trang chủ</a></li>
                           <div class="wsus__mega_menu">
                               <div class="row">
                                   {{-- category --}}
@@ -103,7 +104,8 @@
                   <div class="accordion accordion-flush" id="accordionFlushExample">
                       <ul class="wsus_mobile_menu_category">
                           @foreach ($categories as $category)
-                              <li><a href="#"><i class="{{ $category->icon }}"></i>{{ $category->name }}</a></li>
+                              <li><a href="{{ route('product.index') }}"><i
+                                          class="{{ $category->icon }}"></i>{{ $category->name }}</a></li>
                           @endforeach
                       </ul>
                   </div>

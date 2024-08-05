@@ -50,10 +50,19 @@ Route::get('auth/google',[GoogleLoginController::class,'googlepage'])->name('goo
 Route::get('auth/google/callback',[GoogleLoginController::class,'googlecallback'])->name('google.callback');
 
 
+
+// Product Route
+
+Route::get('products',[FrontendProductController::class,'productIndex'])->name('product.index');
+
 // Product Detail route
 
 Route::get('product-detail/{id}',[FrontendProductController::class,'showProduct'])->name('product-detail');
 
+// Change Product List View
+Route::get('change-product-list-view',[FrontendProductController::class,'changeListView'])->name('product-list-view');
+//Filter Product By Price
+Route::get('filter-product-by-price',[FrontendProductController::class,'getProductsByPrice'])->name('product.price-filter');
 
 // Set Language For User
 Route::get('locale/{lang}',[LocalizationController::class,'setLang'])->middleware('lang')->name('lang');
