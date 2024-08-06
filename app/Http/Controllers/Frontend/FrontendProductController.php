@@ -18,9 +18,11 @@ class FrontendProductController extends Controller
         return view('frontend.pages.product-detail',compact('product','related_products'));
     }
     public function productIndex(Request $request){
+
         if($request->has('category')){
             $category = Category::where('id',$request->category)->first();
             $products = Product::where(['status'=> 1,'category_id' =>$category->id])->paginate(12);
+            
         }else{
             $products = Product::where(['status'=> 1])->when($request->has('price'),function($query) use($request){
                 $price_get = $request->price;
