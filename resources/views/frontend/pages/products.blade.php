@@ -4,8 +4,8 @@
 
 @section('content')
     <!--============================
-                                                                                                                                                                                                                                                BREADCRUMB START
-                                                                                                                                                                                                                                            ==============================-->
+                                                                                                                                                                                                                                                        BREADCRUMB START
+                                                                                                                                                                                                                                                    ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -22,13 +22,13 @@
         </div>
     </section>
     <!--============================
-                                                                                                                                                                                                                                                BREADCRUMB END
-                                                                                                                                                                                                                                            ==============================-->
+                                                                                                                                                                                                                                                        BREADCRUMB END
+                                                                                                                                                                                                                                                    ==============================-->
 
 
     <!--============================
-                                                                                                                                                                                                                                                PRODUCT PAGE START
-                                                                                                                                                                                                                                            ==============================-->
+                                                                                                                                                                                                                                                        PRODUCT PAGE START
+                                                                                                                                                                                                                                                    ==============================-->
     <section id="wsus__product_page">
         <div class="container">
             <div class="row">
@@ -96,41 +96,11 @@
                                 <div id="collapseThree3" class="accordion-collapse collapse show"
                                     aria-labelledby="headingThree3" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault11">
-                                            <label class="form-check-label" for="flexCheckDefault11">
-                                                gentle park
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked22">
-                                            <label class="form-check-label" for="flexCheckChecked22">
-                                                colors
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked222">
-                                            <label class="form-check-label" for="flexCheckChecked222">
-                                                yellow
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked33">
-                                            <label class="form-check-label" for="flexCheckChecked33">
-                                                enice man
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked333">
-                                            <label class="form-check-label" for="flexCheckChecked333">
-                                                plus point
-                                            </label>
-                                        </div>
+                                        @foreach ($brands as $brand)
+                                            <li style="list-style: none " class="mb-3"><a
+                                                    href="{{ route('product.index', ['brand' => $brand->id]) }}">{{ $brand->name }}</a>
+                                            </li>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -143,10 +113,9 @@
                         <div class="col-xl-12 d-none d-md-block mt-md-4 mt-lg-0">
                             <div class="wsus__product_topbar">
                                 <div class="wsus__product_topbar_left">
-                                    <div class="nav nav-pills" id="v-pills-tab" role="tablist"
-                                        aria-orientation="vertical">
+                                    <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         <button
-                                            class="nav-link {{ session()->has('product_list_style') && session()->get('product_list_style') == 'grid' ? 'active' : '' }} list-view"
+                                            class="nav-link {{ session()->has('product_list_style') && session()->get('product_list_style') == 'grid' ? 'show active' : '' }} list-view"
                                             data-id="grid" id="v-pills-home-tab" data-bs-toggle="pill"
                                             data-bs-target="#v-pills-home" type="button" role="tab"
                                             aria-controls="v-pills-home" aria-selected="true">
@@ -294,8 +263,8 @@
         </div>
     </section>
     <!--============================
-                                                                                                                                                                                                                                                PRODUCT PAGE END
-                                                                                                                                                                                                                                            ==============================-->
+                                                                                                                                                                                                                                                        PRODUCT PAGE END
+                                                                                                                                                                                                                                                    ==============================-->
 @endsection
 
 
