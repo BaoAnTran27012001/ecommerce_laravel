@@ -27,16 +27,16 @@ class FrontendProductController extends Controller
             $products = Product::where(['status'=> 1,'category_id' =>$category->id])->paginate(12);
 
             
-        }else{
-
-        }elseif ($request->has('price')){
-
-            $products = Product::where(['status'=> 1])->when($request->has('price'),function($query) use($request){
-                $price_get = $request->price;
-                $convert_price = (int) (str_ireplace('.', '', $price_get));
-                return $query->where('discount_price','=',$convert_price)->orWhere('price','=',$convert_price);
+        }elseif ($request->has('price_from') && $request->has('price_to')){
+            
+            $products = Product::where(['status'=> 1])->when($request->has('price_from'),function($query) use($request){
+                
+                $price_from = $request->price_from;
+                $convert_price_from = (int) (str_ireplace('.', '', $price_from));
+                $price_to = $request->price_to;
+                $convert_price_to = (int) (str_ireplace('.', '', $price_to));
+                return $query->whereBetween('discount_price',[$convert_price_from,$convert_price_to]);
             })->paginate(12);
-           
         }elseif ($request->has('brand')){
             $brand = Brand::where('id',$request->brand)->first();
             $products = Product::where([
