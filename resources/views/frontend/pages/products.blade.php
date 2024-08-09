@@ -4,8 +4,8 @@
 
 @section('content')
     <!--============================
-                                                                                                                                                                                                                                                        BREADCRUMB START
-                                                                                                                                                                                                                                                    ==============================-->
+                                                                                                                                                                                                                                                                BREADCRUMB START
+                                                                                                                                                                                                                                                            ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -22,13 +22,13 @@
         </div>
     </section>
     <!--============================
-                                                                                                                                                                                                                                                        BREADCRUMB END
-                                                                                                                                                                                                                                                    ==============================-->
+                                                                                                                                                                                                                                                                BREADCRUMB END
+                                                                                                                                                                                                                                                            ==============================-->
 
 
     <!--============================
-                                                                                                                                                                                                                                                        PRODUCT PAGE START
-                                                                                                                                                                                                                                                    ==============================-->
+                                                                                                                                                                                                                                                                PRODUCT PAGE START
+                                                                                                                                                                                                                                                            ==============================-->
     <section id="wsus__product_page">
         <div class="container">
             <div class="row">
@@ -53,6 +53,9 @@
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <ul>
+                                            <li><a
+                                                href="{{ route('product.index', ['category' => 'all']) }}">Tất Cả</a>
+                                        </li>
                                             @foreach ($categories as $category)
                                                 <li><a
                                                         href="{{ route('product.index', ['category' => $category->id]) }}">{{ $category->name }}</a>
@@ -75,8 +78,19 @@
                                         <div class="price_ranger">
                                             <form action="{{ url()->current() }}" method="GET">
                                                 @csrf
-                                                <input type="text" id="price_input" class="form-control"
-                                                    name="price" />
+                                                <div class="row">
+                                                    <div class="col-12 mb-3">
+                                                        <label for="">Từ:</label>
+                                                        <input type="text" id="price_from" class="form-control"
+                                                            name="price_from" />
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="">Đến:</label>
+                                                        <input type="text" id="price_to" class="form-control"
+                                                            name="price_to" />
+                                                    </div>
+                                                </div>
+
                                                 <button id="price_confirm" type="submit"
                                                     class="common_btn mt-4">lọc</button>
                                             </form>
@@ -263,8 +277,8 @@
         </div>
     </section>
     <!--============================
-                                                                                                                                                                                                                                                        PRODUCT PAGE END
-                                                                                                                                                                                                                                                    ==============================-->
+                                                                                                                                                                                                                                                                PRODUCT PAGE END
+                                                                                                                                                                                                                                                            ==============================-->
 @endsection
 
 
@@ -272,7 +286,11 @@
     <script>
         $(document).ready(function() {
             $(document).ready(function() {
-                $('#price_input').maskMoney({
+                $('#price_from').maskMoney({
+                    thousands: '.',
+                    precision: 0
+                });
+                $('#price_to').maskMoney({
                     thousands: '.',
                     precision: 0
                 });

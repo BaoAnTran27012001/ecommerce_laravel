@@ -14,11 +14,12 @@
                           <i class="far fa-bars"></i>
                       </div>
                       <ul class="wsus_menu_cat_item show_home toggle_menu">
+                       
                           @foreach ($categories as $category)
                               <li><a href="{{ route('product.index', ['category' => $category->id]) }}"><i
                                           class="{{ $category->icon }}"></i>{{ $category->name }}</a></li>
                           @endforeach
-                          <li><a href="#"><i class="fal fa-gem"></i>Xem Tất Cả Danh Mục</a></li>
+                          <li><a href="{{ route('product.index', ['category' => 'all']) }}"><i class="fal fa-gem"></i>Xem Tất Cả Danh Mục</a></li>
                       </ul>
 
                       <ul class="wsus__menu_item">

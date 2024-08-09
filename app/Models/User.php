@@ -47,4 +47,13 @@ class User extends Authenticatable
     public function purchaseOrder(){
         return $this->hasMany(PurchaseOrder::class,'user_id');
     }
+
+
+
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+    
 }
