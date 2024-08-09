@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\PurchaseOrder;
+use App\Models\PurchaseOrderDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,6 +26,7 @@ class PurchaseOrderController extends Controller
     public function create()
     {
         $suppliers = User::where('role_id',3)->get();
+
         return view('admin.purchase.create',compact('suppliers'));
     }
 
@@ -32,6 +35,7 @@ class PurchaseOrderController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $request->validate([
             "supplier_choose"=>['required'],
             "purchase_no"=>['required'],
@@ -40,6 +44,7 @@ class PurchaseOrderController extends Controller
             "phone"=>['required'],
             "address"=>['required'],
             "active_choose"=>['required'],
+
         ]);
         $purchase_order = new PurchaseOrder();
         $purchase_order->invoice_no = $request->purchase_no;
@@ -59,7 +64,10 @@ class PurchaseOrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $products = Product::all();
+        $puchase_order_detail = PurchaseOrderDetail::where('purchase_order_id',$id)->get();
+        $purchase_id = $id;
+        return view('admin.purchase.detail',compact('products','purchase_id','puchase_order_detail'));
     }
 
     /**
@@ -85,4 +93,5 @@ class PurchaseOrderController extends Controller
     {
         //
     }
+
 }

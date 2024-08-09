@@ -23,12 +23,12 @@ class FrontendProductController extends Controller
         if($request->has('category')){
             $category = Category::where('id',$request->category)->first();
             $products = Product::where(['status'=> 1,'category_id' =>$category->id])->paginate(12);
-<<<<<<< HEAD
-            
+
+
         }else{
-=======
+            
         }elseif ($request->has('price')){
->>>>>>> 8cf50bcc9cdaf8ff6240342d04260bd83e936c50
+
             $products = Product::where(['status'=> 1])->when($request->has('price'),function($query) use($request){
                 $price_get = $request->price;
                 $convert_price = (int) (str_ireplace('.', '', $price_get));
@@ -52,5 +52,5 @@ class FrontendProductController extends Controller
     public function changeListView(Request $request){
         Session::put('product_list_style',$request->style);
     }
-  
+
 }

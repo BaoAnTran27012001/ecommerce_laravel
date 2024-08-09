@@ -47,24 +47,24 @@
                                                     {{ $purchase->phone }}
                                                 </div>
                                             </td>
-                            <td>{{ $purchase->supplier->username }}</td>
-                            <td>{{ $purchase->address }}</td>
-                            <td>
-                                <a href="{{ route('admin.purchase.show', $purchase->purchase_id) }}"
-                                    class="btn btn-warning">Chi Tiết Đơn Mua</a>
-                            </td>
+                                            <td>{{ $purchase->supplier->username }}</td>
+                                            <td>{{ $purchase->address }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.purchase.show', $purchase->purchase_id) }}"
+                                                    class="btn btn-warning">Chi Tiết Đơn Mua</a>
+                                            </td>
 
-                            </tr>
-                            @endforeach
+                                        </tr>
+                                    @endforeach
 
-                            </table>
+                                </table>
+                            </div>
                         </div>
+
                     </div>
-
                 </div>
-            </div>
 
-        </div>
+            </div>
 
         </div>
     </section>
