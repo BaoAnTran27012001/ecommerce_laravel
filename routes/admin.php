@@ -8,11 +8,13 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImagesController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\PurchaseOrderController;
+use App\Http\Controllers\Backend\PurchaseOrderDetailController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Localization\LocalizationController;
 use App\Models\ProductImage;
+use App\Models\PurchaseOrderDetail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
@@ -49,5 +51,6 @@ Route::get('api/products',[ProductController::class,'spGetProducts'])->name('sp.
 // Order routes
 Route::resource('order', OrderController::class);
 // Purchase Order Route
+Route::post('corfirm-item',[PurchaseOrderDetailController::class,'storePurchaseItem'])->name('item.cofirm');
 Route::resource('purchase', PurchaseOrderController::class);
 ?>

@@ -25,13 +25,16 @@ class FrontendProductController extends Controller
         } elseif($request->has('category')){
             $category = Category::where('id',$request->category)->first();
             $products = Product::where(['status'=> 1,'category_id' =>$category->id])->paginate(12);
-        }elseif ($request->has('price_from') && ($request->has('price_to'))){
-            $products = Product::where(['status'=> 1])->when($request->has('price_from'),function($query) use($request){
-                $price_from = $request->price_from;
-                $convert_price_from = (int) (str_ireplace('.', '', $price_from));
-                $price_to = $request->price_to;
-                $convert_price_to = (int) (str_ireplace('.', '', $price_to));
-                return $query->whereBetween('discount_price', [$convert_price_from, $convert_price_to]);
+
+            
+        }else{
+
+        }elseif ($request->has('price')){
+
+            $products = Product::where(['status'=> 1])->when($request->has('price'),function($query) use($request){
+                $price_get = $request->price;
+                $convert_price = (int) (str_ireplace('.', '', $price_get));
+                return $query->where('discount_price','=',$convert_price)->orWhere('price','=',$convert_price);
             })->paginate(12);
            
         }elseif ($request->has('brand')){
@@ -52,5 +55,5 @@ class FrontendProductController extends Controller
     public function changeListView(Request $request){
         Session::put('product_list_style',$request->style);
     }
-  
+
 }
